@@ -7,6 +7,11 @@ void VolE::Game::initVars()
     this->mEndGame = false;
 }
 
+void VolE::Game::initState()
+{
+    // push newly created state to stack 
+}
+
 void VolE::Game::initWindow()
 {
     // create a window using settings in conf/window.ini
@@ -112,6 +117,11 @@ void VolE::Game::updateAll(const float& dt)
 {
     this->pollEvents();
 
+    // for game states
+    if(!this->mStatesContainer.empty())
+    {
+        this->mStatesContainer.top()->updateState(dt);
+    }
 }
 
 // == RENDER FUNCTIONS ==
@@ -121,13 +131,20 @@ void VolE::Game::renderAll()
     this->mWindow->clear();
 
     // 2. draw objects on window
+
+    // for game states
+    if(!this->mStatesContainer.empty())
+    {
+        this->mStatesContainer.top()->renderState(this->mWindow);
+    }
+    
     
     // 3. display
     this->mWindow->display();
 }
 
 // == RUN ==
-// main fucntionning game loop (with delta time calculations)
+// main functionning game loop (with delta time calculations)
 void VolE::Game::run()
 {
     float lastFrameTime = 0.0f;

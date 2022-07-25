@@ -4,11 +4,8 @@
 #include <fstream>
 #include <sstream>
 
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-
+#include "State.hpp"
+#include "GameState.hpp"
 
 
 namespace VolE
@@ -19,16 +16,23 @@ namespace VolE
         // == WINDOW VARIABLES ==
         sf::RenderWindow* mWindow;
         sf::VideoMode mVideoMode;
+
+        // == RESOURCES ==
+        std::stack<VolE::State*> mStatesContainer;
+
         // == EVENT VARIABLES ==
         sf::Event mEvent;
+
         // == TIME VARIABLES ==
         sf::Clock mClock;
         float UPS = 1.0f / 120.0f;
+
         // == LOGIC ==
         bool mEndGame;
 
         // == INITIALIZER FUNCTIONS ==
         void initVars();
+        void initState();
         void initWindow();
 
     public:

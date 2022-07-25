@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 16:09:37 2022
+# Make data base, printed on Mon Jul 25 09:01:55 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\maxge
 # environment
 LOCALAPPDATA = C:\Users\maxge\AppData\Local
 # environment
-VSCODE_CWD = C:\Users\maxge\AppData\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\Windows\system32
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14976_PRQBTOPOVYJINWFT
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7676_KHNOHOAJJCWKDWJY
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -71,7 +71,7 @@ ONEDRIVE = C:\Users\maxge\OneDrive
 # makefile
 CURDIR := d:/Users/maxge/Code/Projects/VolitionEngine
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 14976
+VSCODE_PID = 7676
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -209,9 +209,9 @@ VCPKG_DEFAULT_TRIPLET = x64-windows
 
 # Directories
 
-# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 1658516168): 6 files, no impossibilities.
+# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 1658525018): 7 files, no impossibilities.
 
-# 6 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -268,12 +268,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 13 / storage = 91 B / avg = 7 B
-# current buf: size = 8174 B / used = 91 B / count = 13 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 96 B / avg = 6 B
+# current buf: size = 8174 B / used = 96 B / count = 14 / avg = 6 B
 
-# strcache performance: lookups = 16 / hit rate = 18%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
-# Load=13/8192=0%, Rehash=0, Collisions=0/16=0%
-# Finished Make data base on Fri Jul 22 16:09:37 2022
+# Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
+# Finished Make data base on Mon Jul 25 09:01:55 2022
 
  
