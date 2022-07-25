@@ -5,6 +5,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 
+#include <iostream>
 #include <vector>
 #include <stack>
 #include <map>
@@ -35,6 +36,7 @@ namespace VolE
     void checkEndState(); 
 
     virtual void cleanUpState() = 0;
+    virtual void updateKeyInputs() = 0;
     virtual void updateState(const float& dt) = 0;
     virtual void renderState(sf::RenderTarget* targetWin = nullptr) = 0;
 

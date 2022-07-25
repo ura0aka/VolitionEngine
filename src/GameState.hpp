@@ -15,6 +15,7 @@ namespace VolE
 
     // == MAIN FUNCTIONS ==
     void cleanUpState() override;
+    void updateKeyInputs() override;
     void updateState(const float& dt) override;
     void renderState(sf::RenderTarget* targetWin) override;
     };

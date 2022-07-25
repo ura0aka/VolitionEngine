@@ -105,15 +105,15 @@ void VolE::Game::pollEvents()
                 break;
             }
 
-            // if esc key is pressed, close window
-            case sf::Event::KeyPressed:
-            {
-                if(mEvent.key.code == sf::Keyboard::Escape)
-                {
-                    this->mWindow->close();
-                }
-                break;
-            }
+            // // if esc key is pressed, close window
+            // case sf::Event::KeyPressed:
+            // {
+            //     if(mEvent.key.code == sf::Keyboard::Escape)
+            //     {
+            //         this->mWindow->close();
+            //     }
+            //     break;
+            // }
 
             default:
             {
@@ -133,7 +133,17 @@ void VolE::Game::updateAll(const float& dt)
     if(!this->mStatesContainer.empty())
     {
         this->mStatesContainer.top()->updateState(dt);
+        if(this->mStatesContainer.top()->getEndState())
+        {
+            delete this->mStatesContainer.top();
+            this->mStatesContainer.pop();
+        }
     }
+    else
+    {
+        this->mWindow->close();
+    }
+
 }
 
 // == RENDER FUNCTIONS ==
