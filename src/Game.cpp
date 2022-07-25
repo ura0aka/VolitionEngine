@@ -9,7 +9,8 @@ void VolE::Game::initVars()
 
 void VolE::Game::initState()
 {
-    // push newly created state to stack 
+    // push newly created state to stack
+    this->mStatesContainer.push(new VolE::GameState(this->mWindow)); 
 }
 
 void VolE::Game::initWindow()
@@ -42,6 +43,7 @@ void VolE::Game::initWindow()
 VolE::Game::Game()
 {
     this->initVars();
+    this->initState();
     this->initWindow();
 }
 
@@ -49,6 +51,16 @@ VolE::Game::~Game()
 {
     // deallocate memory
     delete this->mWindow;
+
+    while(!this->mStatesContainer.empty())
+    {
+        // while our stack still has states in queue:
+        // 1- deallocate the memory the pointer is holding
+        delete this->mStatesContainer.top();
+        // 2- pop the pointer from the stack
+        this->mStatesContainer.pop();
+    }
+
 }
 
 // == ACCESSOR FUNCTIONS ==

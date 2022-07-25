@@ -10,10 +10,11 @@ namespace VolE
 
     public:
     // == CONSTRUCTOR/DESTRUCTOR ==
-    GameState();
+    GameState(sf::RenderWindow* Win);
     virtual ~GameState();
 
     // == MAIN FUNCTIONS ==
+    void cleanUpState() override;
     void updateState(const float& dt) override;
     void renderState(sf::RenderTarget* targetWin) override;
     };
