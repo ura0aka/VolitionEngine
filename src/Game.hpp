@@ -9,6 +9,16 @@
 
 namespace VolE
 {
+
+    enum winState
+    {
+        INITIALIZING,       // game is being initialized
+        LOADING,            // game is loading in assets (fonts, textures, etc.)
+        RUNNING,            // game is currently running in the main loop
+        CLOSING,            // game is closing
+        CLOSED              // game is closed  
+    };
+
     class Game
     {
     private:
@@ -27,6 +37,7 @@ namespace VolE
         float UPS = 1.0f / 120.0f;
 
         // == LOGIC ==
+        winState mState;
         bool mEndGame;
 
         // == INITIALIZER FUNCTIONS ==

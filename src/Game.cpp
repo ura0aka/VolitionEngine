@@ -9,7 +9,7 @@ void VolE::Game::initVars()
 
 void VolE::Game::initState()
 {
-    // push newly created state to stack
+    // push newly created state to stack (LIFO)
     this->mStatesContainer.push(new VolE::GameState(this->mWindow)); 
 }
 
@@ -42,6 +42,8 @@ void VolE::Game::initWindow()
 // == CONSTRUCTOR/DESTRUCTOR ==
 VolE::Game::Game()
 {
+    this->mState = INITIALIZING;
+
     this->initVars();
     this->initState();
     this->initWindow();
@@ -49,6 +51,8 @@ VolE::Game::Game()
 
 VolE::Game::~Game()
 {
+    this->mState = CLOSING;
+
     // deallocate memory
     delete this->mWindow;
 
@@ -60,6 +64,8 @@ VolE::Game::~Game()
         // 2- pop the pointer from the stack
         this->mStatesContainer.pop();
     }
+
+    this->mState = CLOSED;
 
 }
 
@@ -143,7 +149,6 @@ void VolE::Game::updateAll(const float& dt)
     {
         this->mWindow->close();
     }
-
 }
 
 // == RENDER FUNCTIONS ==
@@ -169,6 +174,8 @@ void VolE::Game::renderAll()
 // main functionning game loop (with delta time calculations)
 void VolE::Game::run()
 {
+    this->mState = RUNNING;
+    
     float lastFrameTime = 0.0f;
     float dt = 0.0f;
     

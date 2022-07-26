@@ -1,4 +1,5 @@
 #include "GameState.hpp"
+// == INITIALIZER FUNCTIONS ==
 
 
 // == CONSTRUCTOR/DESTRUCTOR ==
@@ -33,5 +34,5 @@ void VolE::GameState::updateState(const float& dt)
 
 void VolE::GameState::renderState(sf::RenderTarget* targetWin)
 {
-
+    
 }
