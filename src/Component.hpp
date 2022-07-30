@@ -12,7 +12,6 @@ namespace VolE
     class Component
     {
     private:
-    Entity* mEntity{nullptr};
 
     // component classes will have:
     // *some data
@@ -20,6 +19,7 @@ namespace VolE
     // *render function
 
     public:
+    Entity* mEntity{nullptr};
     // == CONSTRUCTOR/DESTRUCTOR ==
     Component();
     virtual ~Component(); 
