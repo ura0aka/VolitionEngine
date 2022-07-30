@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 26 15:42:08 2022
+# Make data base, printed on Sat Jul 30 10:17:21 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\maxge
 # environment
 LOCALAPPDATA = C:\Users\maxge\AppData\Local
 # environment
-VSCODE_CWD = C:\Windows\system32
+VSCODE_CWD = C:\Windows\System32
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4844_PHNYMWLCDBAYTAXP
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13608_POSMWTOULVBJRYBS
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 4844
+VSCODE_PID = 13608
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -193,8 +193,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives 
- jobserver output-sync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 7100
 # environment
@@ -265,7 +264,8 @@ GNUmakefile:
 # Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No 'vpath' 
+ search paths.
 
 # No general ('VPATH' variable) search path.
 
@@ -275,6 +275,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Tue Jul 26 15:42:08 2022
+# Finished Make data base on Sat Jul 30 10:17:21 2022
 
  

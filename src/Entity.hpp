@@ -19,15 +19,15 @@ namespace VolE
     public:
     // == CONSTRUCTOR/DESTRUCTOR ==
     Entity();
-    ~Entity();
+    virtual ~Entity();
 
     // == ACCESSOR FUNCTIONS ==
     bool getStatus();
     const char* getName();
 
     // == MAIN FUNCTIONS == 
-    void updateEntity(const float& dt);
-    void renderEntity(sf::RenderTarget* targetWin);
+    virtual void updateObj(const float& dt);
+    virtual void renderObj(sf::RenderTarget* targetWin);
 
     };
 }

@@ -30,9 +30,19 @@ void VolE::GameState::updateKeyInputs()
 void VolE::GameState::updateState(const float& dt)
 {
     this->updateKeyInputs();
+
+    // update all entities in our container
+    for(auto& entity : this->mEntityContainer)
+    {
+        entity->updateObj(dt);
+    }
 }
+
 
 void VolE::GameState::renderState(sf::RenderTarget* targetWin)
 {
-    
+    for(auto& entity : this->mEntityContainer)
+    {
+        entity->renderObj(targetWin);
+    }
 }

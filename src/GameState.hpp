@@ -9,6 +9,9 @@ namespace VolE
     class GameState : public State
     {
     private:
+
+    // == RESOURCES ==
+    std::vector<std::unique_ptr<Entity>> mEntityContainer {};
     // == GAME OBJECTS ==
 
 
