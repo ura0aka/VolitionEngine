@@ -1,11 +1,15 @@
 #pragma once
 
+#include <Component.hpp>
+
 #include <SFML/Graphics.hpp>
 
 #include <cstdint>
 
 namespace VolE
 {
+    class Component;
+    
     class Entity
     {
     private:
@@ -14,6 +18,7 @@ namespace VolE
 
     const char* mName{};
     bool mAlive = true;
+    std::vector<std::unique_ptr<Component>> mComponentsContainer{};
 
 
     public:
@@ -22,12 +27,16 @@ namespace VolE
     virtual ~Entity();
 
     // == ACCESSOR FUNCTIONS ==
-    bool getStatus();
+    bool isAlive() const;
     const char* getName();
 
-    // == MAIN FUNCTIONS == 
-    virtual void updateObj(const float& dt);
-    virtual void renderObj(sf::RenderTarget* targetWin);
+    // == MAIN FUNCTIONS ==
+    template<typename T, typename... TArgs>
+    T& addComponent(TArgs&&... mArgs);
+
+    void destroyObj();
+    void updateObj(const float& dt);
+    void renderObj(sf::RenderTarget* targetWin);
 
     };
 }
