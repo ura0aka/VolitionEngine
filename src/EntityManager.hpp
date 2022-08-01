@@ -14,7 +14,7 @@ namespace VolE
     EntityManager();
     ~EntityManager();
 
-    Entity& addEntity();
+    VolE::Entity& addEntity();
 
     // == MAIN FUNCTIONS ==
     void updateManager(const float& dt);

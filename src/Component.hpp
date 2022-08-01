@@ -2,6 +2,9 @@
 
 #include "Entity.hpp"
 
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+
 namespace VolE
 {
     class Entity;

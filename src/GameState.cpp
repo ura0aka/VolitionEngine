@@ -5,7 +5,10 @@
 // == CONSTRUCTOR/DESTRUCTOR ==
 VolE::GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
-
+    auto& gEntity(e_Manager.addEntity());
+    auto& gShape(gEntity.addComponent<VolE::ShapeComponent>());
+    auto& gCounter(gEntity.addComponent<VolE::LifeTimeComponent>());
+    auto& gKill(gEntity.addComponent<VolE::KillComponent>(gCounter));
 }
 
 VolE::GameState::~GameState()
@@ -30,19 +33,12 @@ void VolE::GameState::updateKeyInputs()
 void VolE::GameState::updateState(const float& dt)
 {
     this->updateKeyInputs();
+    e_Manager.updateManager(dt);
 
-    // update all entities in our container
-    for(auto& entity : this->mEntityContainer)
-    {
-        entity->updateObj(dt);
-    }
 }
 
 
 void VolE::GameState::renderState(sf::RenderTarget* targetWin)
 {
-    for(auto& entity : this->mEntityContainer)
-    {
-        entity->renderObj(targetWin);
-    }
+    e_Manager.renderManager(targetWin);
 }

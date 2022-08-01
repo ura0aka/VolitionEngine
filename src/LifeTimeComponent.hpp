@@ -12,11 +12,7 @@ namespace VolE
 
     public:
     float mCounter{0.0f};
-    void updateComponent(const float& dt) override
-    {
-        ++mCounter * dt;
-        std::cout << mCounter << '\n';
-    }
+    void updateComponent(const float& dt) override;
 
     };
 }

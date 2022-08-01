@@ -10,16 +10,9 @@ namespace VolE
     LifeTimeComponent& cCounter;
 
     public:
-    KillComponent(LifeTimeComponent& mCounter)
-        :cCounter(mCounter) {}
+    KillComponent(LifeTimeComponent& mCounter);
 
-    void updateComponent(const float& dt) override
-    {
-        if(cCounter.mCounter >= 100)
-        {
-            VolE::Component::mEntity->destroyObj();
-        } 
-    } 
+    void updateComponent(const float& dt) override;
 
 
     };

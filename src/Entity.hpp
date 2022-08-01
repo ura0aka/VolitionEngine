@@ -1,8 +1,9 @@
 #pragma once
 
-#include <Component.hpp>
+#include "Component.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 
 #include <cstdint>
 

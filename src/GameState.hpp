@@ -1,6 +1,10 @@
 #pragma once
 
 #include "State.hpp"
+#include "EntityManager.hpp"
+#include "ShapeComponent.hpp"
+#include "LifeTimeComponent.hpp"
+#include "KillComponent.hpp"
 
 
 // game state class where everything will happen
@@ -10,11 +14,14 @@ namespace VolE
     {
     private:
 
+    // == MANAGERS ==
+    VolE::EntityManager e_Manager;
+    // == COMPONENTS ==
+
     // == RESOURCES ==
-    std::vector<std::unique_ptr<Entity>> mEntityContainer {};
+
     // == GAME OBJECTS ==
-
-
+    
     // == INITIALIZER FUNCTIONS ==
 
     public:

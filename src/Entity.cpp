@@ -36,7 +36,7 @@ T& VolE::Entity::addComponent(TArgs&&... mArgs)
     // 3. wrap the regular pointer into a smart pointer
     std::unique_ptr<Component> uC_Ptr{component};
     // 4. store the component ptr in our container
-    mComponentsContainer.emplace(std::move(uC_Ptr));
+    mComponentsContainer.emplace_back(std::move(uC_Ptr));
 
     // return reference(so it's not lost to the container's ownership) to the component
     return *component;
