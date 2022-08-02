@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 01 08:42:23 2022
+# Make data base, printed on Mon Aug 01 20:59:59 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\maxge
 # environment
 LOCALAPPDATA = C:\Users\maxge\AppData\Local
 # environment
-VSCODE_CWD = C:\Users\maxge\AppData\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\Windows\System32
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12184_SJIARXCGXZZGFMPA
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_5472_ILGVOVNMNPYXHSTH
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -71,7 +71,7 @@ ONEDRIVE = C:\Users\maxge\OneDrive
 # makefile
 CURDIR := d:/Users/maxge/Code/Projects/VolitionEngine
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 12184
+VSCODE_PID = 5472
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -108,6 +108,8 @@ SHELL := sh.exe
 HOMEPATH = \Users\maxge
 # default
 MAKECMDGOALS := all
+# environment
+ACSETUPSVCPORT = 23210
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
@@ -159,6 +161,8 @@ AMDRMSDKPATH = C:\Program Files\AMD\RyzenMasterSDK\
 # default
 MAKE_VERSION := 4.3
 # environment
+RLSSVCPORT = 22112
+# environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = WHITESPACENEGAT
@@ -201,7 +205,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 # environment
 VCPKG_DEFAULT_TRIPLET = x64-windows
 # variable set hash-table stats:
-# Load=94/1024=9%, Rehash=0, Collisions=8/119=7%
+# Load=96/1024=9%, Rehash=0, Collisions=8/121=7%
 
 # Pattern-specific Variable Values
 
@@ -209,8 +213,7 @@ VCPKG_DEFAULT_TRIPLET = x64-windows
 
 # Directories
 
-# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 1659357106): 8 files, no impossibilit 
-ies.
+# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 1659357106): 8 files, no impossibilities.
 
 # 8 files, no impossibilities in 1 directories.
 
@@ -262,7 +265,8 @@ GNUmakefile:
 #  Failed to be updated.
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
+# Load=7/1024 
+=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
@@ -275,6 +279,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Mon Aug 01 08:42:23 2022
+# Finished Make data base on Mon Aug 01 20:59:59 2022
 
  
