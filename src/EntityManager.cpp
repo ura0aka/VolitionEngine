@@ -29,15 +29,14 @@ void VolE::EntityManager::updateManager(const float& dt)
     // 1. we have an iterator return a value in removedEntity
     // 2. using the lambda, it returns a dead entity into removedEntity
     // 3. erase dead entity
-    auto removedEntity{std::remove_if(mEntityContainer.begin(), mEntityContainer.end(),
+    mEntityContainer.erase
+    (std::remove_if(mEntityContainer.begin(), mEntityContainer.end(),
     [](const std::unique_ptr<Entity>& entity)
         {
             return !entity->isAlive();
-        })};
-    if (removedEntity == mEntityContainer.end())
-    {
-        mEntityContainer.erase(removedEntity);
-    }
+        }
+    ),
+    mEntityContainer.end());
 
     // update all entities in container
     for(auto& entity : mEntityContainer)
