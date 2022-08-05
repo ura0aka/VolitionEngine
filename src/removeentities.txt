@@ -1,8 +1,0 @@
-    mEntityContainer.erase
-    (std::remove_if(mEntityContainer.begin(), mEntityContainer.end(),
-    [](const std::unique_ptr<Entity>& entity)
-        {
-            return !entity->isAlive();
-        }
-    ),
-    mEntityContainer.end());

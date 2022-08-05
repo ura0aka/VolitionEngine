@@ -1,34 +1,20 @@
 #include "Entity.hpp"
 
-// == CONSTRUCTOR/DESTRUCTOR
-VolE::Entity::Entity()
-{
-
-}
-
-VolE::Entity::~Entity()
-{
-
-}
-
-// == ACCESSOR FUNCTIONS ==
-bool VolE::Entity::isAlive() const
-{
-    return this->mAlive;
-}
-
-const char* VolE::Entity::getName()
-{
-    return this->mName;
-}
-
 // == COMPONENT MANAGER SECTION == 
 
-// takes in T(specified component type) <T>
-// takes in any amount of specified arguments that will be forwarded to the Component constructor <TArgs>
+template<typename T>
+bool VolE::Entity::hasComponent() const
+{
+    // check if entity possesses a component of given type 'T'
+    // bitset returns (true/false) of given unique ID at index
+    return mComponentBitset[getComponentTypeID<T>()];
+}
+
 template<typename T, typename... TArgs>
 T& VolE::Entity::addComponent(TArgs&&... mArgs)
 {
+    assert(!hasComponent<T>() && "ERROR: Entity already owns this component. \n");
+
     // 1. allocate new component of type <T>, 
     T* component(new T(std::forward<TArgs>(mArgs)...));
     // 2. components entity owner is set like so
@@ -38,15 +24,30 @@ T& VolE::Entity::addComponent(TArgs&&... mArgs)
     // 4. store the component ptr in our container
     mComponentsContainer.emplace_back(std::move(uC_Ptr));
 
-    // return reference(so it's not lost to the container's ownership) to the component
+    // add a component of type 'T' to array at given index->(generated unique ID)
+    mComponentArray[getComponentTypeID<T>()] = component;
+    // set component's bitset signature 
+    mComponentBitset[getComponentTypeID<T>()] = true;
+
+    // return reference (so it's not lost to the container's ownership) to the component
     return *component;
 }
 
-// == MAIN FUNCTIONS ==
-void VolE::Entity::destroyObj()
+template<typename T>
+T& VolE::Entity::getComponent() const
 {
-    this->mAlive = false;
+    // retrieve pointer to component of given type 'T' from mComponentArray
+    assert(hasComponent<T>() && "ERROR: Component does not exist. \n");
+    auto ptr{mComponentArray[getComponentTypeID<T>()]};
+    return *static_cast<T*>(ptr); 
 }
+// == ACCESSOR FUNCTIONS ==
+bool VolE::Entity::isAlive() const { return this->mAlive; }
+void VolE::Entity::destroyObj() { this->mAlive = false; }
+
+
+
+// == MAIN FUNCTIONS ==
 
 void VolE::Entity::updateObj(const float& dt)
 {
@@ -58,7 +59,7 @@ void VolE::Entity::updateObj(const float& dt)
     }
 }
 
-void VolE::Entity::renderObj(sf::RenderTarget* targetWin)
+void VolE::Entity::renderObj(sf::RenderWindow& targetWin)
 {
     // will iterate through all the components it possesses
     // and each component will be drawn on target window

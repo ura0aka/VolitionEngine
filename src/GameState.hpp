@@ -17,7 +17,7 @@ namespace VolE
     private:
 
     // == MANAGERS ==
-    VolE::EntityManager e_Manager;
+    
     // == COMPONENTS ==
 
     // == RESOURCES ==

@@ -25,6 +25,7 @@ VolE::Entity& VolE::EntityManager::addEntity()
 // == MAIN FUNCTIONS ==
 void VolE::EntityManager::updateManager(const float& dt)
 {
+    // shoutout to Vittorio Romeo
     // remove all dead entities from mEntityContainer
     // 1. we have an iterator return a value in removedEntity
     // 2. using the lambda, it returns a dead entity into removedEntity

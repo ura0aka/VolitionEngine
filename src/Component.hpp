@@ -9,27 +9,27 @@ namespace VolE
 {
     class Entity;
 
-
-    // this is the base component class, other game component
-    // classes will inherit from this
+    // == BASE COMPONENT CLASS ==
     class Component
     {
     private:
 
     // component classes will have:
     // *some data
-    // *update function
-    // *render function
+    // *update functions
+    // *render functions
 
     public:
     Entity* mEntity{nullptr};
     // == CONSTRUCTOR/DESTRUCTOR ==
     Component();
     virtual ~Component(); 
+    
+    virtual void initComponent();
 
     // == MAIN FUNCTIONS ==
     virtual void updateComponent(const float& dt);
-    virtual void renderComponent(sf::RenderTarget* targetWin);
+    virtual void renderComponent(sf::RenderWindow& targetWin);
 
     };
 }

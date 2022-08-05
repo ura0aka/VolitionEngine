@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug 02 16:44:33 2022
+# Make data base, printed on Fri Aug 05 11:23:54 2022
 
 # Variables
 
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4152_PATOQKGKTMIPLWNG
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7368_DJSSGUDDMDUEJZLG
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -53,7 +53,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\da76f93349a72022ca4670c1b84860304616aaa2
 # environment
 LANG = C
 # default
@@ -71,7 +71,7 @@ ONEDRIVE = C:\Users\maxge\OneDrive
 # makefile
 CURDIR := d:/Users/maxge/Code/Projects/VolitionEngine
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 4152
+VSCODE_PID = 7368
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -155,6 +155,8 @@ GNUMAKEFLAGS :=
 # environment
 OS = Windows_NT
 # environment
+__COMPAT_LAYER = DetectorsAppHealth
+# environment
 AMDRMSDKPATH = C:\Program Files\AMD\RyzenMasterSDK\
 # makefile
 .DEFAULT_GOAL := 
@@ -185,7 +187,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\maxge\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.69.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.70.0-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -205,7 +207,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 # environment
 VCPKG_DEFAULT_TRIPLET = x64-windows
 # variable set hash-table stats:
-# Load=96/1024=9%, Rehash=0, Collisions=8/121=7%
+# Load=97/1024=9%, Rehash=0, Collisions=8/122=7%
 
 # Pattern-specific Variable Values
 
@@ -278,6 +280,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Tue Aug 02 16:44:33 2022
+# Finished Make data base on Fri Aug 05 11:23:54 2022
 
  

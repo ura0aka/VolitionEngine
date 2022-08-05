@@ -6,9 +6,9 @@ LIBS = -Lsfml/lib -lsfml-graphics -lsfml-window -lsfml-system
 OPT = -O0
 
 #add cpp files here
-CPPFILES = main.cpp Game.cpp State.cpp GameState.cpp Entity.cpp EntityManager.cpp Component.cpp ShapeComponent.cpp LifeTimeComponent.cpp KillComponent.cpp
+CPPFILES = main.cpp Game.cpp State.cpp GameState.cpp 
 #define .o files to be created here
-OBJECTS = main.o Game.o State.o GameState.o Entity.o EntityManager.o Component.o ShapeComponent.o LifeTimeComponent.o KillComponent.o
+OBJECTS = main.o Game.o State.o GameState.o
 
 BINARY = app
 
