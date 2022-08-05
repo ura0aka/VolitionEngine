@@ -4,6 +4,8 @@
 
 namespace VolE
 {
+    class Entity;
+    
     class EntityManager
     {
     private:
@@ -14,11 +16,12 @@ namespace VolE
     EntityManager();
     ~EntityManager();
 
-    VolE::Entity& addEntity();
+    // == ENTITY MANAGER FUNCTION(S) ==
+    Entity& addEntity();
 
     // == MAIN FUNCTIONS ==
     void updateManager(const float& dt);
-    void renderManager(sf::RenderTarget* targetWin);
+    void renderManager(sf::RenderWindow& targetWin);
 
 
 

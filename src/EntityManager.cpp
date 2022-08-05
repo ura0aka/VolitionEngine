@@ -1,14 +1,8 @@
 #include "EntityManager.hpp"
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-VolE::EntityManager::EntityManager()
-{
-
-}
-VolE::EntityManager::~EntityManager()
-{
-
-}
+VolE::EntityManager::EntityManager() {}
+VolE::EntityManager::~EntityManager() {}
 
 VolE::Entity& VolE::EntityManager::addEntity()
 {
@@ -46,7 +40,7 @@ void VolE::EntityManager::updateManager(const float& dt)
     }
 }
 
-void VolE::EntityManager::renderManager(sf::RenderTarget* targetWin)
+void VolE::EntityManager::renderManager(sf::RenderWindow& targetWin)
 {
     // render all entities in container
     for(auto& entity : mEntityContainer)
