@@ -40,7 +40,7 @@ void VolE::EntityManager::updateManager(const float& dt)
     }
 }
 
-void VolE::EntityManager::renderManager(sf::RenderWindow& targetWin)
+void VolE::EntityManager::renderManager(sf::RenderTarget* targetWin)
 {
     // render all entities in container
     for(auto& entity : mEntityContainer)

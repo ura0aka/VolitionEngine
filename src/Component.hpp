@@ -21,15 +21,21 @@ namespace VolE
 
     public:
     Entity* mEntity{nullptr};
+
     // == CONSTRUCTOR/DESTRUCTOR ==
     Component();
     virtual ~Component(); 
-    
     virtual void initComponent();
+
+    // == ACCESSOR FUNCTIONS ==
+    void setOwnership(Entity* eOwner)
+    {
+        this->mEntity = eOwner;
+    }
 
     // == MAIN FUNCTIONS ==
     virtual void updateComponent(const float& dt);
-    virtual void renderComponent(sf::RenderWindow& targetWin);
+    virtual void renderComponent(sf::RenderTarget* targetWin);
 
     };
 }

@@ -21,7 +21,7 @@ namespace VolE
 
     // == MAIN FUNCTIONS ==
     void updateManager(const float& dt);
-    void renderManager(sf::RenderWindow& targetWin);
+    void renderManager(sf::RenderTarget* targetWin);
 
 
 

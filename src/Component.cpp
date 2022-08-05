@@ -9,5 +9,5 @@ void VolE::Component::initComponent() {}
 
 // == MAIN FUNCTIONS ==
 void VolE::Component::updateComponent(const float& dt) {}
-void VolE::Component::renderComponent(sf::RenderWindow& targetWin) {}
+void VolE::Component::renderComponent(sf::RenderTarget* targetWin) {}
 

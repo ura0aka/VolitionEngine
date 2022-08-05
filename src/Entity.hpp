@@ -66,7 +66,7 @@ namespace VolE
 
     // == MAIN FUNCTIONS ==
     void updateObj(const float& dt);
-    void renderObj(sf::RenderWindow& targetWin);
+    void renderObj(sf::RenderTarget* targetWin);
 
     };
 }

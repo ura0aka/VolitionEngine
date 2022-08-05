@@ -18,7 +18,7 @@ T& VolE::Entity::addComponent(TArgs&&... mArgs)
     // 1. allocate new component of type <T>, 
     T* component(new T(std::forward<TArgs>(mArgs)...));
     // 2. components entity owner is set like so
-    component->mEntity = this;
+    component->setOwnership(this);
     // 3. wrap the regular pointer into a smart pointer
     std::unique_ptr<Component> uC_Ptr{component};
     // 4. store the component ptr in our container
@@ -59,7 +59,7 @@ void VolE::Entity::updateObj(const float& dt)
     }
 }
 
-void VolE::Entity::renderObj(sf::RenderWindow& targetWin)
+void VolE::Entity::renderObj(sf::RenderTarget* targetWin)
 {
     // will iterate through all the components it possesses
     // and each component will be drawn on target window

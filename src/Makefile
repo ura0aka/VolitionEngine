@@ -6,9 +6,9 @@ LIBS = -Lsfml/lib -lsfml-graphics -lsfml-window -lsfml-system
 OPT = -O0
 
 #add cpp files here
-CPPFILES = main.cpp Game.cpp State.cpp GameState.cpp 
+CPPFILES = main.cpp Game.cpp State.cpp GameState.cpp Component.cpp Entity.cpp EntityManager.cpp
 #define .o files to be created here
-OBJECTS = main.o Game.o State.o GameState.o
+OBJECTS = main.o Game.o State.o GameState.o Component.o Entity.o EntityManager.o
 
 BINARY = app
 
@@ -26,7 +26,7 @@ $(BINARY):$(OBJECTS)
 # $^ = %.cpp
 
 # all .o files possess a dependency on Game.hpp
-$(OBJECTS): Game.hpp Entity.hpp State.hpp GameState.hpp EntityManager.hpp Component.hpp ShapeComponent.hpp LifeTimeComponent.hpp KillComponent.hpp 
+$(OBJECTS): Game.hpp 
 
 clean: 
 	rm -rf $(BINARY) $(OBJECTS)
