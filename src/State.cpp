@@ -1,25 +1,25 @@
 #include "State.hpp"
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-VolE::State::State(sf::RenderWindow* Win)
+State::State(sf::RenderWindow* Win)
 {
     this->mWindow = Win;
     this->mQuitState = false;
 }
 
-VolE::State::~State()
+State::~State()
 {
 
 }
 
 // == ACCESSOR FUNCTIONS ==
-const bool VolE::State::getEndState() const
+const bool State::getEndState() const
 {
     return mQuitState;
 }
 
 // == MAIN FUNCTIONS ==
-void VolE::State::checkEndState()
+void State::checkEndState()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {

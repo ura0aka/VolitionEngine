@@ -3,7 +3,7 @@
 // == COMPONENT MANAGER SECTION == 
 
 template<typename T>
-bool VolE::Entity::hasComponent() const
+bool Entity::hasComponent() const
 {
     // check if entity possesses a component of given type 'T'
     // bitset returns (true/false) of given unique ID at index
@@ -11,7 +11,7 @@ bool VolE::Entity::hasComponent() const
 }
 
 template<typename T, typename... TArgs>
-T& VolE::Entity::addComponent(TArgs&&... mArgs)
+T& Entity::addComponent(TArgs&&... mArgs)
 {
     assert(!hasComponent<T>() && "ERROR: Entity already owns this component. \n");
 
@@ -34,7 +34,7 @@ T& VolE::Entity::addComponent(TArgs&&... mArgs)
 }
 
 template<typename T>
-T& VolE::Entity::getComponent() const
+T& Entity::getComponent() const
 {
     // retrieve pointer to component of given type 'T' from mComponentArray
     assert(hasComponent<T>() && "ERROR: Component does not exist. \n");
@@ -42,14 +42,14 @@ T& VolE::Entity::getComponent() const
     return *static_cast<T*>(ptr); 
 }
 // == ACCESSOR FUNCTIONS ==
-bool VolE::Entity::isAlive() const { return this->mAlive; }
-void VolE::Entity::destroyObj() { this->mAlive = false; }
+bool Entity::isAlive() const { return this->mAlive; }
+void Entity::destroyObj() { this->mAlive = false; }
 
 
 
 // == MAIN FUNCTIONS ==
 
-void VolE::Entity::updateObj(const float& dt)
+void Entity::updateObj(const float& dt)
 {
     // will iterate through all the components
     // and update whichever needs to be updated
@@ -59,7 +59,7 @@ void VolE::Entity::updateObj(const float& dt)
     }
 }
 
-void VolE::Entity::renderObj(sf::RenderTarget* targetWin)
+void Entity::renderObj(sf::RenderTarget* targetWin)
 {
     // will iterate through all the components it possesses
     // and each component will be drawn on target window

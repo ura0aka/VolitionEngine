@@ -1,10 +1,10 @@
 #include "EntityManager.hpp"
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-VolE::EntityManager::EntityManager() {}
-VolE::EntityManager::~EntityManager() {}
+EntityManager::EntityManager() {}
+EntityManager::~EntityManager() {}
 
-VolE::Entity& VolE::EntityManager::addEntity()
+Entity& EntityManager::addEntity()
 {
     // 1. allocate new entity object on the heap
     Entity* entity{new Entity{}};
@@ -17,7 +17,7 @@ VolE::Entity& VolE::EntityManager::addEntity()
 }
 
 // == MAIN FUNCTIONS ==
-void VolE::EntityManager::updateManager(const float& dt)
+void EntityManager::updateManager(const float& dt)
 {
     // shoutout to Vittorio Romeo
     // remove all dead entities from mEntityContainer
@@ -40,7 +40,7 @@ void VolE::EntityManager::updateManager(const float& dt)
     }
 }
 
-void VolE::EntityManager::renderManager(sf::RenderTarget* targetWin)
+void EntityManager::renderManager(sf::RenderTarget* targetWin)
 {
     // render all entities in container
     for(auto& entity : mEntityContainer)

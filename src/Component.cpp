@@ -1,13 +1,13 @@
 #include "Component.hpp"
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-VolE::Component::Component() {}
-VolE::Component::~Component() {}
+Component::Component() {}
+Component::~Component() {}
 
 // for component composition
-void VolE::Component::initComponent() {}
+void Component::initComponent() {}
 
 // == MAIN FUNCTIONS ==
-void VolE::Component::updateComponent(const float& dt) {}
-void VolE::Component::renderComponent(sf::RenderTarget* targetWin) {}
+void Component::updateComponent(const float& dt) {}
+void Component::renderComponent(sf::RenderTarget* targetWin) {}
 

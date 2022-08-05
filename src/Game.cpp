@@ -1,19 +1,19 @@
 #include "Game.hpp"
 
 // == INITIALIZER FUNCTIONS == 
-void VolE::Game::initVars()
+void Game::initVars()
 {
     this->mWindow = nullptr;
     this->mEndGame = false;
 }
 
-void VolE::Game::initState()
+void Game::initState()
 {
     // push newly created state to stack (LIFO)
-    this->mStatesContainer.push(new VolE::GameState(this->mWindow)); 
+    this->mStatesContainer.push(new GameState(this->mWindow)); 
 }
 
-void VolE::Game::initWindow()
+void Game::initWindow()
 {
     // create a window using settings in conf/window.ini
     std::ifstream win_config("conf/window.ini");
@@ -40,7 +40,7 @@ void VolE::Game::initWindow()
 }
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-VolE::Game::Game()
+Game::Game()
 {
     this->mState = INITIALIZING;
 
@@ -49,7 +49,7 @@ VolE::Game::Game()
     this->initWindow();
 }
 
-VolE::Game::~Game()
+Game::~Game()
 {
     this->mState = CLOSING;
 
@@ -70,23 +70,23 @@ VolE::Game::~Game()
 }
 
 // == ACCESSOR FUNCTIONS ==
-const bool VolE::Game::isRunning() const
+const bool Game::isRunning() const
 {
     return this->mWindow->isOpen();
 }
 
-const bool VolE::Game::gameStatus() const
+const bool Game::gameStatus() const
 {
     return this->mEndGame;
 }
 
-float VolE::Game::getElapsedSeconds()
+float Game::getElapsedSeconds()
 {
     // get elapsed time rendering a frame in seconds
     return this->mClock.getElapsedTime().asSeconds();
 }
 
-float VolE::Game::getElapsedMilliseconds()
+float Game::getElapsedMilliseconds()
 {
     // get elapsed time rendering a frame in milliseconds
     return this->mClock.getElapsedTime().asMilliseconds();
@@ -95,7 +95,7 @@ float VolE::Game::getElapsedMilliseconds()
 
 // == EVENT HANDLING == 
 // get system events 
-void VolE::Game::pollEvents()
+void Game::pollEvents()
 {
     // while there is a flow of pending events
     // (we pass in an sf::Event variable)
@@ -131,7 +131,7 @@ void VolE::Game::pollEvents()
 
 // == LOOP ==
 // == UPDATE FUNCTIONS ==
-void VolE::Game::updateAll(const float& dt)
+void Game::updateAll(const float& dt)
 {
     this->pollEvents();
 
@@ -152,7 +152,7 @@ void VolE::Game::updateAll(const float& dt)
 }
 
 // == RENDER FUNCTIONS ==
-void VolE::Game::renderAll()
+void Game::renderAll()
 {
     // 1. clear previous frame
     this->mWindow->clear();
@@ -172,7 +172,7 @@ void VolE::Game::renderAll()
 
 // == RUN ==
 // main functionning game loop (with delta time calculations)
-void VolE::Game::run()
+void Game::run()
 {
     this->mState = RUNNING;
     
