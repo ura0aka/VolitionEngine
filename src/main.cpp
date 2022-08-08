@@ -59,16 +59,60 @@ struct KillComponent : Component
     }
 };
 
+
+// main functionning game loop (with delta time calculations)
+void run(Game& mainGame, EntityManager& manager)
+{
+    float spawnTimerMax = 5.0f;
+    float spawnTimer = spawnTimerMax;
+
+    float UPS = 1.0f / 120.0f;
+    float lastFrameTime = 0.0f;
+    float dt = 0.0f;
+    
+    while(mainGame.isRunning() && !mainGame.gameStatus())
+    {
+        // delta time calculation (in seconds)
+        float currentFrameTime = mainGame.getElapsedSeconds();
+        dt = currentFrameTime - lastFrameTime;
+        lastFrameTime = currentFrameTime;
+
+        if(spawnTimer >= spawnTimerMax)
+        {
+            for(int i {0}; i < 10; ++i)
+            {
+                auto& entity(manager.addEntity());
+                auto& cCounter(entity.addComponent<CounterComponent>());
+                auto& cShape(entity.addComponent<ShapeComponent>());
+                auto& cKill(entity.addComponent<KillComponent>());
+                
+                spawnTimer = 0.0f;
+            }
+        }
+        else
+        {
+            spawnTimer += 1;
+        }
+
+        if(dt >= UPS)
+        {
+            // update frame (we will pass in delta time here)
+            mainGame.updateAll(dt);
+            dt -= UPS;
+            manager.updateManager(dt);
+        }
+        // render frame
+        mainGame.renderAll();
+        manager.renderManager(mainGame.getWindow());
+    }
+}
+
 int main()
 {
-    EntityManager manager;
     Game mainGame;
+    EntityManager manager;
 
-    mainGame.run();
-
-
-
-
+    run(mainGame, manager);
 
     return 0;
 }
