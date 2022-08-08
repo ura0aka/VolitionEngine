@@ -3,8 +3,11 @@
 #include <fstream>
 #include <sstream>
 
-#include "State.hpp"
 #include "GameState.hpp"
+
+struct CounterComponent;
+struct ShapeComponent;
+struct KillComponent;
 
 enum winState
 {
@@ -30,7 +33,10 @@ private:
 
     // == TIME VARIABLES ==
     sf::Clock mClock;
-    float UPS = 1.0f / 120.0f;
+    // float UPS = 1.0f / 120.0f;
+
+    // float spawnTimerMax = 5.0f;
+    // float spawnTimer = spawnTimerMax;
 
     // == LOGIC ==
     winState mState;
@@ -51,13 +57,14 @@ public:
     const bool gameStatus() const;
     float getElapsedSeconds();
     float getElapsedMilliseconds();
+    sf::RenderWindow* getWindow() { return this->mWindow; }
 
     // == EVENT HANDLING ==
     void pollEvents();
     // == LOOP ==
     void updateAll(const float& dt);
     void renderAll();
-    void run();
+    //void run(EntityManager& manager);
     
 
 };

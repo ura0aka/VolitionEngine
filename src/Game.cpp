@@ -171,29 +171,49 @@ void Game::renderAll()
 }
 
 // == RUN ==
-// main functionning game loop (with delta time calculations)
-void Game::run()
-{
-    this->mState = RUNNING;
+// // main functionning game loop (with delta time calculations)
+// void Game::run(EntityManager& manager)
+// {
+//     this->mState = RUNNING;
     
-    float lastFrameTime = 0.0f;
-    float dt = 0.0f;
+//     float lastFrameTime = 0.0f;
+//     float dt = 0.0f;
     
-    while(this->isRunning() && !this->gameStatus())
-    {
-        // delta time calculation (in seconds)
-        float currentFrameTime = this->getElapsedSeconds();
-        dt = currentFrameTime - lastFrameTime;
-        lastFrameTime = currentFrameTime;
+//     while(this->isRunning() && !this->gameStatus())
+//     {
+//         // delta time calculation (in seconds)
+//         float currentFrameTime = this->getElapsedSeconds();
+//         dt = currentFrameTime - lastFrameTime;
+//         lastFrameTime = currentFrameTime;
 
-        if(dt >= UPS)
-        {
-            // update frame (we will pass in delta time here)
-            this->updateAll(dt);
-            dt -= UPS;
-        }
-        // render frame
-        this->renderAll();
-    }
-}
+//         if(spawnTimer >= spawnTimerMax)
+//         {
+//             for(int i {0}; i < 10; ++i)
+//             {
+//                 auto& entity(manager.addEntity());
+//                 auto& cCounter(entity.addComponent<CounterComponent>());
+//                 auto& cShape(entity.addComponent<ShapeComponent>());
+//                 auto& cKill(entity.addComponent<KillComponent>());
+                
+
+//                 spawnTimer = 0.0f;
+//             }
+//         }
+//         else
+//         {
+//             spawnTimer += 1;
+//         }
+
+//         if(dt >= UPS)
+//         {
+//             // update frame (we will pass in delta time here)
+//             this->updateAll(dt);
+//             dt -= UPS;
+//             manager.updateManager(dt);
+//         }
+//         // render frame
+//         this->renderAll();
+//         manager.renderManager(this->mWindow);
+//     }
+
 

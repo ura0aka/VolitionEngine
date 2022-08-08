@@ -1,8 +1,6 @@
 #pragma once
 
 #include "State.hpp"
-#include "Entity.hpp"
-#include "Component.hpp"
 #include "EntityManager.hpp"
 
 #include <random>
