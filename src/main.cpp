@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "Entity.hpp"
 
 // == For testing ==
 std::default_random_engine gen;
@@ -70,6 +71,11 @@ void run(Game& mainGame, EntityManager& manager)
     float UPS = 1.0f / 120.0f;
     float lastFrameTime = 0.0f;
     float dt = 0.0f;
+
+    auto& entity(manager.addEntity());
+    // auto& cCounter(entity.addComponent<CounterComponent>());
+    // auto& cShape(entity.addComponent<ShapeComponent>());
+    // auto& cKill(entity.addComponent<KillComponent>());
     
     while(mainGame.isRunning() && !mainGame.gameStatus())
     {
@@ -78,22 +84,7 @@ void run(Game& mainGame, EntityManager& manager)
         dt = currentFrameTime - lastFrameTime;
         lastFrameTime = currentFrameTime;
 
-        if(spawnTimer >= spawnTimerMax)
-        {
-            for(int i {0}; i < 10; ++i)
-            {
-                auto& entity(manager.addEntity());
-                auto& cCounter(entity.addComponent<CounterComponent>());
-                auto& cShape(entity.addComponent<ShapeComponent>());
-                auto& cKill(entity.addComponent<KillComponent>());
-                
-                spawnTimer = 0.0f;
-            }
-        }
-        else
-        {
-            spawnTimer += 1;
-        }
+
 
         if(dt >= UPS)
         {
