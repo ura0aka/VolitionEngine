@@ -19,6 +19,9 @@ ComponentArray mComponentArray {}; // stores pointers to its components
 ComponentBitset mComponentBitset {}; // stores the ID of a particular component
 
 public:
+// == DESTRUCTOR ==
+~Entity();
+
 // == COMPONENT MANAGER FUNCTIONS ==
 template<typename T>
 bool hasComponent() const

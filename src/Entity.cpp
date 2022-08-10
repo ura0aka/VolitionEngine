@@ -1,16 +1,12 @@
 #include "Entity.hpp"
-
-// == COMPONENT MANAGER SECTION == 
-
+// == DESTRUCTOR ==
+Entity::~Entity() {}
 
 // == ACCESSOR FUNCTIONS ==
 bool Entity::isAlive() const { return this->mAlive; }
 void Entity::destroyObj() { this->mAlive = false; }
 
-
-
 // == MAIN FUNCTIONS ==
-
 void Entity::updateObj(const float& dt)
 {
     // will iterate through all the components

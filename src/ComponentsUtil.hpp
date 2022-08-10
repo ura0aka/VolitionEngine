@@ -18,7 +18,6 @@ struct CounterComponent : Component
     void updateComponent(const float& dt) override
     {
         counter += dt;
-        //std::cout << counter << std::endl;
     }
 };
 
@@ -58,5 +57,23 @@ struct KillComponent : Component
     void updateComponent(const float& dt) override
     {
         if(cCounter->counter >= 2) mEntity->destroyObj();
+    }
+};
+
+struct PositionComponent : Component
+{
+    sf::Vector2f mPos;
+    PositionComponent() = default;
+    PositionComponent(const sf::Vector2f& position)
+        :mPos{position} {}
+    
+    float posX() const noexcept
+    {
+        return mPos.x;
+    }
+
+    float posY() const noexcept
+    {
+        return mPos.y;
     }
 };

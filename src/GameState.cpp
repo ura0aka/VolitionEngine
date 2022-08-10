@@ -4,8 +4,22 @@
 void GameState::initManager()
 {
     auto& entity(this->manager.addEntity());
+    auto& entity1(this->manager.addEntity());
+    auto& entity2(this->manager.addEntity());
+    auto& entity3(this->manager.addEntity());
+
+
     auto& cCounter(entity.addComponent<CounterComponent>());
+    auto& cCounter1(entity1.addComponent<CounterComponent>());
+    auto& cCounter2(entity2.addComponent<CounterComponent>());
+    auto& cCounter3(entity3.addComponent<CounterComponent>());
+
     auto& cShape(entity.addComponent<ShapeComponent>());
+    auto& cShape1(entity1.addComponent<ShapeComponent>());
+    auto& cShape2(entity2.addComponent<ShapeComponent>());
+    auto& cShape3(entity3 .addComponent<ShapeComponent>());
+
+
     //auto& cKill(entity.addComponent<KillComponent>());
 }
 

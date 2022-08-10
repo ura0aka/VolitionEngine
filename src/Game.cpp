@@ -164,8 +164,6 @@ void Game::renderAll()
     {
         this->mStatesContainer.top()->renderState(this->mWindow);
     }
-    
-    
     // 3. display
     this->mWindow->display();
 }
@@ -191,7 +189,6 @@ void Game::run()
             // update frame (we will pass in delta time here)
             this->updateAll(dt);
             dt -= UPS;
-            
         }
         // render frame
         this->renderAll();
