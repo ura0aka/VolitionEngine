@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include <iostream>
+
 class Component;
 
 class Entity
@@ -45,6 +47,7 @@ T& addComponent(TArgs&&... mArgs)
     // set component's bitset signature 
     mComponentBitset[getComponentTypeID<T>()] = true;
 
+    std::cout << "Added component" << '\n';
     // return reference (so it's not lost to the container's ownership) to the component
     return *component;
 }

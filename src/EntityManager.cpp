@@ -1,4 +1,5 @@
 #include "EntityManager.hpp"
+#include <iostream>
 
 // == CONSTRUCTOR/DESTRUCTOR ==
 EntityManager::EntityManager() {}
@@ -38,6 +39,8 @@ void EntityManager::updateManager(const float& dt)
     {
         entity->updateObj(dt);
     }
+
+    std::cout << "Entities: " << mEntityContainer.size() << '\n';
 }
 
 void EntityManager::renderManager(sf::RenderTarget* targetWin)

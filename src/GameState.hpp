@@ -5,6 +5,7 @@
 
 #include <random>
 
+class EntityManager;
 // == GAME STATE CLASS ==
 // game state class where everything will happen
 class GameState : public State
@@ -12,7 +13,7 @@ class GameState : public State
 private:
 
 // == MANAGERS ==
-
+EntityManager manager;
 // == COMPONENTS ==
 
 // == RESOURCES ==
@@ -20,6 +21,7 @@ private:
 // == GAME OBJECTS ==
 
 // == INITIALIZER FUNCTIONS ==
+void initManager();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==

@@ -1,11 +1,18 @@
 #include "GameState.hpp"
+#include "ComponentsUtil.hpp"
 // == INITIALIZER FUNCTIONS ==
-
+void GameState::initManager()
+{
+    auto& entity(this->manager.addEntity());
+    auto& cCounter(entity.addComponent<CounterComponent>());
+    auto& cShape(entity.addComponent<ShapeComponent>());
+    //auto& cKill(entity.addComponent<KillComponent>());
+}
 
 // == CONSTRUCTOR/DESTRUCTOR ==
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
-
+    this->initManager();
 }
 
 GameState::~GameState()
@@ -30,10 +37,11 @@ void GameState::updateKeyInputs()
 void GameState::updateState(const float& dt)
 {
     this->updateKeyInputs();
+    this->manager.updateManager(dt);
 }
 
 
 void GameState::renderState(sf::RenderTarget* targetWin)
 {
-
+    this->manager.renderManager(targetWin);
 }

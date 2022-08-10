@@ -33,10 +33,7 @@ private:
 
     // == TIME VARIABLES ==
     sf::Clock mClock;
-    // float UPS = 1.0f / 120.0f;
-
-    // float spawnTimerMax = 5.0f;
-    // float spawnTimer = spawnTimerMax;
+    float UPS = 1.0f / 120.0f;
 
     // == LOGIC ==
     winState mState;
@@ -64,7 +61,7 @@ public:
     // == LOOP ==
     void updateAll(const float& dt);
     void renderAll();
-    //void run(EntityManager& manager);
+    void run();
     
 
 };
