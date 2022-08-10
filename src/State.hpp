@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Entity.hpp"
-
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

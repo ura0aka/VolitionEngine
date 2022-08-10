@@ -8,6 +8,7 @@ std::uniform_int_distribution<int> randColorRed(0,255);
 std::uniform_int_distribution<int> randColorGreen(0,255);
 std::uniform_int_distribution<int> randColorBlue(0,255); 
 
+
 // == COMPONENTS ==
 
 struct CounterComponent : Component
