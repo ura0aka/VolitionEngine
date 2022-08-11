@@ -21,7 +21,8 @@ EntityManager manager;
 // == GAME OBJECTS ==
 
 // == INITIALIZER FUNCTIONS ==
-void initManager();
+Entity& initPlayer();
+Entity& initNPC();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==

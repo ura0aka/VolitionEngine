@@ -21,22 +21,38 @@ struct CounterComponent : Component
     }
 };
 
+struct PositionComponent : Component
+{
+    sf::Vector2f mPos;
+    PositionComponent(sf::Vector2f position):mPos{position} {}
+
+    float x() const noexcept {return mPos.x;}
+    float y() const noexcept {return mPos.y;}
+};
+
+
 struct ShapeComponent : Component
 {
+    PositionComponent* mShapePos{nullptr};
     sf::RectangleShape mShape;
-    ShapeComponent()
+    sf::Vector2f mSize;
+    sf::Color mColor;
+    
+    ShapeComponent() = default;
+
+    ShapeComponent(sf::Vector2f size,sf::Color color)
+        :mSize{size},mColor{color} {} 
+
+    void initComponent() override
     {
-        mShape.setFillColor(sf::Color(randColorRed(gen),randColorGreen(gen),randColorBlue(gen),255));
-        mShape.setSize(sf::Vector2f(10.0f,10.0f));
-        mShape.setPosition(randPosx(gen),randPosy(gen));
+        mShapePos = &mEntity->getComponent<PositionComponent>();
+        mShape.setSize(mSize);
+        mShape.setFillColor(mColor);
     }
-    const float getPos()
+
+    void updateComponent(const float& dt) override
     {
-        return mShape.getPosition().y;
-    }
-    void updateComponent(const float& dt)
-    {
-        //mShape.move(0.0f, 200.0f * dt);
+        mShape.setPosition(mShapePos->mPos);
     }
     void renderComponent(sf::RenderTarget* targetWin) override
     {
@@ -60,20 +76,3 @@ struct KillComponent : Component
     }
 };
 
-struct PositionComponent : Component
-{
-    sf::Vector2f mPos;
-    PositionComponent() = default;
-    PositionComponent(const sf::Vector2f& position)
-        :mPos{position} {}
-    
-    float posX() const noexcept
-    {
-        return mPos.x;
-    }
-
-    float posY() const noexcept
-    {
-        return mPos.y;
-    }
-};

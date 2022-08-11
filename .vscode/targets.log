@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 10 15:48:41 2022
+# Make data base, printed on Thu Aug 11 10:00:27 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\maxge
 # environment
 LOCALAPPDATA = C:\Users\maxge\AppData\Local
 # environment
-VSCODE_CWD = C:\Windows\system32
+VSCODE_CWD = C:\Users\maxge\AppData\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7312_YKNXJMZFBRADCDPA
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15540_ZOBYADGCEBRIVSDT
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -53,7 +53,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\da76f93349a72022ca4670c1b84860304616aaa2
+VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
 # environment
 LANG = C
 # default
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 7312
+VSCODE_PID = 15540
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -185,7 +185,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\maxge\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.70.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.70.1-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -264,7 +264,8 @@ GNUmakefile:
 #  File has been updated.
 #  Failed to be updated.
 
-# files hash-table stats:
+# 
+ files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
@@ -278,6 +279,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Wed Aug 10 15:48:41 2022
+# Finished Make data base on Thu Aug 11 10:00:27 2022
 
  

@@ -51,6 +51,7 @@ T& addComponent(TArgs&&... mArgs)
     mComponentBitset[getComponentTypeID<T>()] = true;
 
     std::cout << "Added component" << '\n';
+    component->initComponent();
     // return reference (so it's not lost to the container's ownership) to the component
     return *component;
 }
