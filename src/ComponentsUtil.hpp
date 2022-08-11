@@ -12,24 +12,35 @@ std::uniform_int_distribution<int> randColorBlue(0,255);
 
 // == COMPONENTS ==
 
-struct CounterComponent : Component
-{
-    float counter;
-    void updateComponent(const float& dt) override
-    {
-        counter += dt;
-    }
-};
-
 struct PositionComponent : Component
 {
     sf::Vector2f mPos;
     PositionComponent(sf::Vector2f position):mPos{position} {}
 
-    float x() const noexcept {return mPos.x;}
-    float y() const noexcept {return mPos.y;}
+    float x() const noexcept { return mPos.x; }
+    float y() const noexcept { return mPos.y; }
 };
 
+struct PhysicsComponent : Component
+{
+    PositionComponent* mCPos{nullptr};
+    sf::Vector2f mVel;
+
+    PhysicsComponent() = default;
+
+    PhysicsComponent(sf::Vector2f velocity)
+        :mVel{velocity} {}
+
+    void initComponent() override
+    {
+        mCPos = &mEntity->getComponent<PositionComponent>();
+    }
+
+    void updateComponent(const float& dt) override
+    {
+        mCPos->mPos += mVel*dt;
+    }
+};
 
 struct ShapeComponent : Component
 {
@@ -61,18 +72,12 @@ struct ShapeComponent : Component
     
 };
 
-struct KillComponent : Component
+struct MovementComponent : Component
 {
-    CounterComponent* cCounter;
-    ShapeComponent* cShape;
-    void initComponent() override
-    {
-        cCounter = &mEntity->getComponent<CounterComponent>();
-        cShape = &mEntity->getComponent<ShapeComponent>();
-    }
-    void updateComponent(const float& dt) override
-    {
-        if(cCounter->counter >= 2) mEntity->destroyObj();
-    }
+    PositionComponent* mPos{nullptr};
+    PhysicsComponent* mPhys{nullptr};
+    
+
 };
+
 
