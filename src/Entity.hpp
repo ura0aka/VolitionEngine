@@ -50,7 +50,8 @@ T& addComponent(TArgs&&... mArgs)
     // set component's bitset signature 
     mComponentBitset[getComponentTypeID<T>()] = true;
 
-    std::cout << "Added component" << '\n';
+    std::cout << "Added component" << std::endl; 
+    // Component::initComponent() (for better component composition)
     component->initComponent();
     // return reference (so it's not lost to the container's ownership) to the component
     return *component;

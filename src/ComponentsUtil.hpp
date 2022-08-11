@@ -38,7 +38,8 @@ struct PhysicsComponent : Component
 
     void updateComponent(const float& dt) override
     {
-        mCPos->mPos += mVel*dt;
+        //mCPos->mPos += mVel * dt;
+        
     }
 };
 
@@ -76,6 +77,40 @@ struct MovementComponent : Component
 {
     PositionComponent* mPos{nullptr};
     PhysicsComponent* mPhys{nullptr};
+    ShapeComponent* mShape{nullptr};
+
+    void initComponent() override
+    {
+        mPos = &mEntity->getComponent<PositionComponent>();
+        mPhys = &mEntity->getComponent<PhysicsComponent>();
+        mShape = &mEntity->getComponent<ShapeComponent>();
+    }
+
+    void updateComponent(const float& dt) override
+    {
+        // keyboard input (player movement)
+        // forward (W)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
+        }
+        // backwards (S)
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            mShape->mShape.move(0.0f, dt * mPhys->mVel.y);
+        }
+        // left (A)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            mShape->mShape.move(dt * -(mPhys->mVel.x), 0.0f);
+        }
+        // right (D)
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
+        }
+    }
+    
     
 
 };
