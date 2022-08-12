@@ -32,7 +32,7 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    for(int i{0}; i < 300; ++i)
+    for(int i{0}; i < 10; ++i)
     {
         this->initNPC();
     }

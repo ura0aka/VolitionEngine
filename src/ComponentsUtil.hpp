@@ -103,33 +103,32 @@ struct MovementComponent : Component
         {
             //mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
             mPhys->mVel.y = -playerVelocity;
-            
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             //mShape->mShape.move(0.0f, dt * mPhys->mVel.y);
             mPhys->mVel.y = playerVelocity;
-            
+        }
+        else
+        {
+            mPhys->mVel.y = 0.0f;
         }
         // left (A)
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             //mShape->mShape.move(dt * -(mPhys->mVel.x), 0.0f);
             mPhys->mVel.x = -playerVelocity;
-
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             //mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
             mPhys->mVel.x = playerVelocity;
-
         }
         else
         {
             mPhys->mVel.x = 0.0f;
-            mPhys->mVel.y = 0.0f;
         }
     }
 
