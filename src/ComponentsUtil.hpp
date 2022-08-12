@@ -11,7 +11,6 @@ std::uniform_int_distribution<int> randColorBlue(0,255);
 
 
 // == COMPONENTS ==
-
 struct PositionComponent : Component
 {
     sf::Vector2f mPos;
@@ -20,6 +19,7 @@ struct PositionComponent : Component
     float x() const noexcept { return mPos.x; }
     float y() const noexcept { return mPos.y; }
 };
+
 
 struct PhysicsComponent : Component
 {
@@ -36,12 +36,12 @@ struct PhysicsComponent : Component
         mCPos = &mEntity->getComponent<PositionComponent>();
     }
 
-    void updateComponent(const float& dt) override
-    {
-        //mCPos->mPos += mVel * dt;
-        
-    }
+
+    float x() const noexcept { return mCPos->x(); };
+    float y() const noexcept { return mCPos->y(); };
+
 };
+
 
 struct ShapeComponent : Component
 {
@@ -60,11 +60,13 @@ struct ShapeComponent : Component
         mShapePos = &mEntity->getComponent<PositionComponent>();
         mShape.setSize(mSize);
         mShape.setFillColor(mColor);
+        mShape.setPosition(mShapePos->mPos);
+
     }
 
     void updateComponent(const float& dt) override
     {
-        mShape.setPosition(mShapePos->mPos);
+        //mShape.setPosition(mShapePos->mPos);
     }
     void renderComponent(sf::RenderTarget* targetWin) override
     {
@@ -72,6 +74,9 @@ struct ShapeComponent : Component
     }
     
 };
+
+
+constexpr float playerVelocity {200.0f};
 
 struct MovementComponent : Component
 {
@@ -93,6 +98,7 @@ struct MovementComponent : Component
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
+            
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -110,8 +116,6 @@ struct MovementComponent : Component
             mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
         }
     }
-    
-    
 
 };
 
