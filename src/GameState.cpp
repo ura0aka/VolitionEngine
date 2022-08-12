@@ -19,7 +19,7 @@ Entity& GameState::initNPC()
 {
     sf::Vector2f npcSize(10.0f,10.0f);
     sf::Color npcColor(sf::Color(randColorRed(gen),randColorGreen(gen),randColorBlue(gen)));
-    sf::Vector2f npcVelocity(20.0f,20.0f);
+    sf::Vector2f npcVelocity(0.0f,0.0f);
     auto& entity(this->manager.addEntity());
 
     entity.addComponent<PositionComponent>(sf::Vector2f(randPosx(gen),randPosy(gen)));
@@ -32,7 +32,7 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    for(int i{0}; i < 100; ++i)
+    for(int i{0}; i < 300; ++i)
     {
         this->initNPC();
     }

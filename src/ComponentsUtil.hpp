@@ -36,6 +36,11 @@ struct PhysicsComponent : Component
         mCPos = &mEntity->getComponent<PositionComponent>();
     }
 
+    void updateComponent(const float& dt) override
+    {
+        mCPos->mPos += dt * mVel;
+    }
+
 
     float x() const noexcept { return mCPos->x(); };
     float y() const noexcept { return mCPos->y(); };
@@ -60,13 +65,12 @@ struct ShapeComponent : Component
         mShapePos = &mEntity->getComponent<PositionComponent>();
         mShape.setSize(mSize);
         mShape.setFillColor(mColor);
-        mShape.setPosition(mShapePos->mPos);
 
     }
 
     void updateComponent(const float& dt) override
     {
-        //mShape.setPosition(mShapePos->mPos);
+        mShape.setPosition(mShapePos->mPos);
     }
     void renderComponent(sf::RenderTarget* targetWin) override
     {
@@ -76,7 +80,7 @@ struct ShapeComponent : Component
 };
 
 
-constexpr float playerVelocity {200.0f};
+constexpr float playerVelocity{200.0f};
 
 struct MovementComponent : Component
 {
@@ -97,26 +101,40 @@ struct MovementComponent : Component
         // forward (W)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
+            //mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
+            mPhys->mVel.y = -playerVelocity;
             
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            mShape->mShape.move(0.0f, dt * mPhys->mVel.y);
+            //mShape->mShape.move(0.0f, dt * mPhys->mVel.y);
+            mPhys->mVel.y = playerVelocity;
+            
         }
         // left (A)
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            mShape->mShape.move(dt * -(mPhys->mVel.x), 0.0f);
+            //mShape->mShape.move(dt * -(mPhys->mVel.x), 0.0f);
+            mPhys->mVel.x = -playerVelocity;
+
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
+            //mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
+            mPhys->mVel.x = playerVelocity;
+
+        }
+        else
+        {
+            mPhys->mVel.x = 0.0f;
+            mPhys->mVel.y = 0.0f;
         }
     }
 
 };
+
+
 
 
