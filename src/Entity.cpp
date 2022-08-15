@@ -1,4 +1,14 @@
 #include "Entity.hpp"
+// == GROUP MANAGER SECTION == 
+bool Entity::hasGroup(GroupID group) const noexcept
+{
+    return mGroupBitset[group];
+}
+
+void Entity::deleteGroup(GroupID group) noexcept
+{
+    mGroupBitset[group] = false;
+}
 
 // == ACCESSOR FUNCTIONS ==
 bool Entity::isAlive() const { return this->mAlive; }

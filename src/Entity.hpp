@@ -75,7 +75,9 @@ T& getComponent() const
 }
 
 // == GROUP MANAGER SECTION == 
-bool hasGroup(GroupID mGroup) const;
+bool hasGroup(GroupID group) const noexcept;
+void addGroup(GroupID group) noexcept;
+void deleteGroup(GroupID group) noexcept;
 
 // == ACCESSOR FUNCTIONS ==
 bool isAlive() const;
