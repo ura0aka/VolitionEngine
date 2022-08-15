@@ -9,12 +9,14 @@
 #include <iostream>
 
 class Component;
-class EntityManager;
+
 
 
 class Entity
 {
 private:
+
+EntityManager& mManager;
 
 bool mAlive{true};
 std::vector<std::unique_ptr<Component>> mComponentsContainer{};
@@ -25,7 +27,8 @@ GroupBitset mGroupBitset {};
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
-~Entity();
+Entity(EntityManager& manager) : mManager{manager} {}
+~Entity() {}
 
 // == COMPONENT MANAGER FUNCTIONS ==
 template<typename T>

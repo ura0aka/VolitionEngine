@@ -13,6 +13,7 @@
 
 
 class Component;
+class EntityManager;
 class Entity;
 
 // == COMPONENT ID SYSTEM ==

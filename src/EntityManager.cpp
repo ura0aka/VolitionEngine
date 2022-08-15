@@ -9,7 +9,7 @@ EntityManager::~EntityManager() {}
 Entity& EntityManager::addEntity()
 {
     // 1. allocate new entity object on the heap
-    Entity* entity{new Entity{}};
+    Entity* entity{new Entity{*this}};
     // 2. wrap regular pointer to a smart pointer
     std::unique_ptr<Entity> uE_ptr{entity};
     // 3. emplace into container

@@ -1,8 +1,4 @@
 #include "Entity.hpp"
-// == CONSTRUCTOR/DESTRUCTOR ==
-Entity::~Entity() {}
-
-
 
 // == ACCESSOR FUNCTIONS ==
 bool Entity::isAlive() const { return this->mAlive; }
