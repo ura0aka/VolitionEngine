@@ -18,13 +18,9 @@ Entity& EntityManager::addEntity()
     return *entity;
 }
 
-
-
-
 // == MAIN FUNCTIONS ==
 void EntityManager::updateManager(const float& dt)
 {
-
     // remove all dead entities from mEntityContainer (see: https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom)
     // 1. std::remove_if will pass each entity to lambda
     // 2. lambda function checks if the entity is alive
