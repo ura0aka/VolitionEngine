@@ -21,33 +21,6 @@ struct PositionComponent : Component
 };
 
 
-struct PhysicsComponent : Component
-{
-    PositionComponent* mCPos{nullptr};
-    sf::Vector2f mVel;
-
-    PhysicsComponent() = default;
-
-    PhysicsComponent(sf::Vector2f velocity)
-        :mVel{velocity} {}
-
-    void initComponent() override
-    {
-        mCPos = &mEntity->getComponent<PositionComponent>();
-    }
-
-    void updateComponent(const float& dt) override
-    {
-        mCPos->mPos += dt * mVel;
-    }
-
-
-    float x() const noexcept { return mCPos->x(); };
-    float y() const noexcept { return mCPos->y(); };
-
-};
-
-
 struct ShapeComponent : Component
 {
     PositionComponent* mShapePos{nullptr};
@@ -65,7 +38,11 @@ struct ShapeComponent : Component
         mShapePos = &mEntity->getComponent<PositionComponent>();
         mShape.setSize(mSize);
         mShape.setFillColor(mColor);
+    }
 
+    sf::FloatRect getGlobalBounds()
+    {
+        return this->mShape.getGlobalBounds();
     }
 
     void updateComponent(const float& dt) override
@@ -80,8 +57,39 @@ struct ShapeComponent : Component
 };
 
 
-constexpr float playerVelocity{200.0f};
+struct PhysicsComponent : Component
+{
+    PositionComponent* mCPos{nullptr};
+    ShapeComponent* mShape{nullptr};
+    sf::Vector2f mVel;
+    sf::Vector2f mSize;
 
+    PhysicsComponent() = default;
+
+    PhysicsComponent(sf::Vector2f velocity, const sf::Vector2f& size)
+        :mVel{velocity} {}
+
+    void initComponent() override
+    {
+        mCPos = &mEntity->getComponent<PositionComponent>();
+        mShape = &mEntity->getComponent<ShapeComponent>();
+    }
+
+    void updateComponent(const float& dt) override
+    {
+        mCPos->mPos += dt * mVel;
+    }
+
+    float x() const noexcept { return mCPos->x(); };
+    float y() const noexcept { return mCPos->y(); };
+    float leftX() const noexcept { return mShape->getGlobalBounds().left; };
+    float rightX() const noexcept { return mShape->getGlobalBounds().left + mShape->getGlobalBounds().width; };
+    float topY() const noexcept { return mShape->getGlobalBounds().top; };
+    float bottomY() const noexcept { return mShape->getGlobalBounds().top + mShape->getGlobalBounds().height; };
+};
+
+
+constexpr float playerVelocity{200.0f};
 struct MovementComponent : Component
 {
     PositionComponent* mPos{nullptr};
@@ -101,13 +109,11 @@ struct MovementComponent : Component
         // forward (W)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            //mShape->mShape.move(0.0f, dt * -(mPhys->mVel.y));
             mPhys->mVel.y = -playerVelocity;
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            //mShape->mShape.move(0.0f, dt * mPhys->mVel.y);
             mPhys->mVel.y = playerVelocity;
         }
         else
@@ -117,13 +123,11 @@ struct MovementComponent : Component
         // left (A)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            //mShape->mShape.move(dt * -(mPhys->mVel.x), 0.0f);
             mPhys->mVel.x = -playerVelocity;
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            //mShape->mShape.move(dt * mPhys->mVel.x, 0.0f);
             mPhys->mVel.x = playerVelocity;
         }
         else
@@ -133,6 +137,27 @@ struct MovementComponent : Component
     }
 
 };
+
+template <class T1, class T2>
+bool isIntersecting(T1& mObjA, T2& mObjB) noexcept
+{
+    return mObjA.rightX() >= mObjB.leftX() &&
+        mObjA.leftX() <= mObjB.rightX() &&
+        mObjA.topY() <= mObjB.bottomY() &&
+        mObjA.bottomY() >= mObjB.topY(); 
+}
+
+void collisionAABB(Entity& mPlayer, Entity& mNpc)
+{
+    auto& cPlayer(mPlayer.getComponent<PhysicsComponent>());
+    auto& cNpc(mNpc.getComponent<PhysicsComponent>());
+
+    if(isIntersecting(cPlayer,cNpc))
+    {
+        std::cout << "intersection event!" << '\n';
+    }
+
+}   
 
 
 

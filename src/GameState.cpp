@@ -10,7 +10,7 @@ Entity& GameState::initPlayer()
 
     entity.addComponent<PositionComponent>(sf::Vector2f(100.0f,100.0f));
     entity.addComponent<ShapeComponent>(playerSize,playerColor);
-    entity.addComponent<PhysicsComponent>(playerVelocity);
+    entity.addComponent<PhysicsComponent>(playerVelocity,playerSize);
     entity.addComponent<MovementComponent>();
     return entity;
 }
@@ -24,7 +24,7 @@ Entity& GameState::initNPC()
 
     entity.addComponent<PositionComponent>(sf::Vector2f(randPosx(gen),randPosy(gen)));
     entity.addComponent<ShapeComponent>(npcSize,npcColor);
-    entity.addComponent<PhysicsComponent>(npcVelocity);
+    entity.addComponent<PhysicsComponent>(npcVelocity,npcSize);
     return entity;
 }
 
@@ -32,11 +32,7 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    for(int i{0}; i < 10; ++i)
-    {
-        this->initNPC();
-    }
-    
+    this->initNPC();
 }
 
 GameState::~GameState()
