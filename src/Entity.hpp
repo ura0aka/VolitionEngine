@@ -16,17 +16,15 @@ class Entity
 {
 private:
 
-EntityManager& mManager;
-
 bool mAlive{true};
 std::vector<std::unique_ptr<Component>> mComponentsContainer{};
 
 ComponentArray mComponentArray {}; // stores pointers to its components
 ComponentBitset mComponentBitset {}; // stores the ID of a particular component
 GroupBitset mGroupBitset {};
+
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
-Entity(EntityManager& manager); 
 ~Entity();
 
 // == COMPONENT MANAGER FUNCTIONS ==
@@ -37,11 +35,6 @@ bool hasComponent() const
     // bitset returns (true/false) of given unique ID at index
     return mComponentBitset[getComponentTypeID<T>()];
 }
-
-// the EntityManager class will be taking care of that 
-void addGroup(GroupID mGroup) noexcept;
-// simply set the bit at which the group resides to 0
-void deleteGroup(GroupID mGroup) noexcept;
 
 template<typename T, typename... TArgs>
 T& addComponent(TArgs&&... mArgs)
