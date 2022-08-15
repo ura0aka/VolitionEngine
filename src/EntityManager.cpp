@@ -5,16 +5,29 @@
 EntityManager::EntityManager() {}
 EntityManager::~EntityManager() {}
 
+// == ENTITY MANAGER FUNCTION(S) ==
 Entity& EntityManager::addEntity()
 {
     // 1. allocate new entity object on the heap
-    Entity* entity{new Entity{}};
+    Entity* entity{new Entity(*this)};
     // 2. wrap regular pointer to a smart pointer
     std::unique_ptr<Entity> uE_ptr{entity};
     // 3. emplace into container
     mEntityContainer.emplace_back(std::move(uE_ptr));
 
     return *entity;
+}
+
+// == GROUP MANAGEMENT ==
+void EntityManager::addToGroup(Entity* entity, GroupID group)
+{
+    mGroupedEntities[group].emplace_back(entity);
+}
+
+std::vector<Entity*>& EntityManager::getEntitiesByGroup(GroupID group)
+{
+    // return entity that belongs to a specific group from the array
+    return mGroupedEntities[group];
 }
 
 // == MAIN FUNCTIONS ==

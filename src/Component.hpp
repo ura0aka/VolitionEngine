@@ -19,6 +19,11 @@ class Entity;
 using ComponentID = std::uint32_t;
 constexpr std::size_t maxComponents{32};
 
+// == group variables ==
+using GroupID = std::uint32_t;
+constexpr std::uint32_t maxGroups{32};
+using GroupBitset = std::bitset<maxGroups>;
+
 using ComponentBitset = std::bitset<maxComponents>;
 using ComponentArray = std::array<Component*, maxComponents>;
 
