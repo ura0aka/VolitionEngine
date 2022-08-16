@@ -18,6 +18,8 @@ Entity& EntityManager::addEntity()
     return *entity;
 }
 
+
+
 // == MAIN FUNCTIONS ==
 void EntityManager::updateManager(const float& dt)
 {

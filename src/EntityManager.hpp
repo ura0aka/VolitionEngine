@@ -8,9 +8,7 @@ class Entity;
 class EntityManager
 {
 private:
-std::vector<std::unique_ptr<Entity>> mEntityContainer {};
-std::array<std::vector<Entity*>, maxGroups> mGroupedEntities {};
-
+std::vector<std::unique_ptr<Entity>> mEntityContainer;
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
@@ -19,6 +17,9 @@ EntityManager();
 
 // == ENTITY MANAGER FUNCTION(S) ==
 Entity& addEntity();
+
+// == GROUP MANAGEMENT ==
+void addToGroup(Entity* entity, GroupID group);
 
 // == MAIN FUNCTIONS ==
 void updateManager(const float& dt);
