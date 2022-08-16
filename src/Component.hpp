@@ -13,8 +13,8 @@
 
 
 class Component;
-class EntityManager;
 class Entity;
+class EntityManager;
 
 // == COMPONENT ID SYSTEM ==
 using ComponentID = std::uint32_t;

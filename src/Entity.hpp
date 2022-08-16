@@ -74,10 +74,11 @@ T& getComponent() const
     return *static_cast<T*>(ptr); 
 }
 
-// == GROUP MANAGER SECTION == 
+// == GROUP MANAGEMENT ==
 bool hasGroup(GroupID group) const noexcept;
-void addGroup(GroupID group) noexcept;
-void deleteGroup(GroupID group) noexcept;
+void addGroup (GroupID group) noexcept;
+void deleteGroup (GroupID group) noexcept;
+
 
 // == ACCESSOR FUNCTIONS ==
 bool isAlive() const;

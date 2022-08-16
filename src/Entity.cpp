@@ -1,11 +1,10 @@
 #include "Entity.hpp"
-// == GROUP MANAGER SECTION == 
+// == GROUP MANAGEMENT ==
 bool Entity::hasGroup(GroupID group) const noexcept
 {
     return mGroupBitset[group];
 }
-
-void Entity::deleteGroup(GroupID group) noexcept
+void Entity::deleteGroup (GroupID group) noexcept
 {
     mGroupBitset[group] = false;
 }
@@ -34,4 +33,5 @@ void Entity::renderObj(sf::RenderTarget* targetWin)
         component->renderComponent(targetWin);
     }
 }
+
 

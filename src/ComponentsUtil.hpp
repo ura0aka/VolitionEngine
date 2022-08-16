@@ -3,8 +3,8 @@
 
 // == For testing ==
 std::default_random_engine gen;
-std::uniform_real_distribution<float> randPosx(0.0f, 500.0f);
-std::uniform_real_distribution<float> randPosy(0.0f, 500.0f);
+std::uniform_real_distribution<float> randPosx(0.0f, 800.0f);
+std::uniform_real_distribution<float> randPosy(0.0f, 800.0f);
 std::uniform_int_distribution<int> randColorRed(0,255);
 std::uniform_int_distribution<int> randColorGreen(0,255);
 std::uniform_int_distribution<int> randColorBlue(0,255); 
