@@ -12,6 +12,8 @@ Entity& GameState::initPlayer()
     entity.addComponent<ShapeComponent>(playerSize,playerColor);
     entity.addComponent<PhysicsComponent>(playerVelocity,playerSize);
     entity.addComponent<MovementComponent>();
+
+    entity.addGroup(VolEGroups::Player);
     return entity;
 }
 
@@ -25,6 +27,8 @@ Entity& GameState::initNPC()
     entity.addComponent<PositionComponent>(sf::Vector2f(randPosx(gen),randPosy(gen)));
     entity.addComponent<ShapeComponent>(npcSize,npcColor);
     entity.addComponent<PhysicsComponent>(npcVelocity,npcSize);
+
+    entity.addGroup(VolEGroups::NPC);
     return entity;
 }
 
@@ -62,6 +66,18 @@ void GameState::updateState(const float& dt)
 {
     this->updateKeyInputs();
     this->manager.updateManager(dt);
+
+    auto& npcs(manager.getEntitiesByGroup(NPC));
+    auto& player(manager.getEntitiesByGroup(Player));
+
+    for (auto& p : player)
+    {
+        for (auto& n : npcs)
+        {
+            collisionAABB(*p, *n);
+        }
+    }
+
 }
 
 

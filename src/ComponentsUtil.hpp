@@ -157,7 +157,13 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
         std::cout << "intersection event!" << '\n';
     }
 
-}   
+}
+
+enum VolEGroups : std::uint32_t
+{
+    Player,
+    NPC
+};
 
 
 
