@@ -18,11 +18,32 @@ Entity& EntityManager::addEntity()
     return *entity;
 }
 
+// == GROUP MANAGEMENT ==
+void EntityManager::addToGroup(Entity* entity, GroupID group)
+{
+    mGroupedEntities[group].emplace_back(entity);
+}
 
+std::vector<Entity*>& EntityManager::getEntitiesByGroup(GroupID group)
+{
+    return mGroupedEntities[group];
+}
 
 // == MAIN FUNCTIONS ==
 void EntityManager::updateManager(const float& dt)
 {
+    for (auto i(0u); i < maxGroups; ++i)
+    {
+        auto& eV{ mGroupedEntities[i] };
+
+        eV.erase
+        (std::remove_if(eV.begin(), eV.end(),
+            [i](Entity* entity)
+            {
+                return !entity->isAlive() || !entity->hasGroup(i);
+            }),
+            eV.end());
+    }
     // remove all dead entities from mEntityContainer (see: https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom)
     // 1. std::remove_if will pass each entity to lambda
     // 2. lambda function checks if the entity is alive
@@ -50,5 +71,11 @@ void EntityManager::renderManager(sf::RenderTarget* targetWin)
     {
         entity->renderObj(targetWin);
     }
+}
+
+void Entity::addGroup(GroupID group) noexcept
+{
+    mGroupBitset[group] = true;
+    mManager.addToGroup(this, group);
 }
 
