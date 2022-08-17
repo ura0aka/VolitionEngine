@@ -86,6 +86,8 @@ struct PhysicsComponent : Component
     float rightX() const noexcept { return mShape->getGlobalBounds().left + mShape->getGlobalBounds().width; };
     float topY() const noexcept { return mShape->getGlobalBounds().top; };
     float bottomY() const noexcept { return mShape->getGlobalBounds().top + mShape->getGlobalBounds().height; };
+    float heightY() const noexcept { return mShape->getGlobalBounds().height; };
+    float widthX() const noexcept { return mShape->getGlobalBounds().width; };
 };
 
 
@@ -161,23 +163,27 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
         {
             std::cout << "bottom_collision \n";
+            cPlayerShape.mShape.setPosition(cPlayer.leftX(), cNpc.topY() - cPlayer.heightY());
         }
         // top-side collision
         else if (cPlayer.topY() > cNpc.topY() && cPlayer.bottomY() > cNpc.bottomY() &&
             cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
         {
             std::cout << "top_collision \n";
+            cPlayerShape.mShape.setPosition(cPlayer.leftX(), cNpc.bottomY());
         }
         // right side collision
         else if (cPlayer.leftX() < cNpc.leftX() && cPlayer.rightX() < cNpc.rightX() &&
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
         {
             std::cout << "right_collision \n";
+            cPlayerShape.mShape.setPosition(cNpc.leftX() - cPlayer.widthX(), cPlayer.topY());
         }
         else if (cPlayer.leftX() > cNpc.leftX() && cPlayer.rightX() > cNpc.rightX() &&
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
         {
             std::cout << "left_collision \n";
+            cPlayerShape.mShape.setPosition(cNpc.rightX(), cPlayer.topY());
         }
 
 
