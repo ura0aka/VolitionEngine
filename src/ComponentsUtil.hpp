@@ -150,11 +150,37 @@ bool isIntersecting(T1& mObjA, T2& mObjB) noexcept
 void collisionAABB(Entity& mPlayer, Entity& mNpc)
 {
     auto& cPlayer(mPlayer.getComponent<PhysicsComponent>());
+    auto& cPlayerShape(mPlayer.getComponent<ShapeComponent>());
     auto& cNpc(mNpc.getComponent<PhysicsComponent>());
+
 
     if(isIntersecting(cPlayer,cNpc))
     {
-        std::cout << "intersection event!" << '\n';
+        // bottom-side collision
+        if (cPlayer.topY() < cNpc.topY() && cPlayer.bottomY() < cNpc.bottomY() &&
+            cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
+        {
+            std::cout << "bottom_collision \n";
+        }
+        // top-side collision
+        else if (cPlayer.topY() > cNpc.topY() && cPlayer.bottomY() > cNpc.bottomY() &&
+            cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
+        {
+            std::cout << "top_collision \n";
+        }
+        // right side collision
+        else if (cPlayer.leftX() < cNpc.leftX() && cPlayer.rightX() < cNpc.rightX() &&
+            cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
+        {
+            std::cout << "right_collision \n";
+        }
+        else if (cPlayer.leftX() > cNpc.leftX() && cPlayer.rightX() > cNpc.rightX() &&
+            cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
+        {
+            std::cout << "left_collision \n";
+        }
+
+
     }
 
 }
