@@ -5,6 +5,7 @@
 
 #include "GameState.hpp"
 
+
 struct CounterComponent;
 struct ShapeComponent;
 struct KillComponent;

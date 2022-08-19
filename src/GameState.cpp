@@ -72,13 +72,7 @@ void GameState::updateState(const float& dt)
     auto& npcs(manager.getEntitiesByGroup(NPC));
     auto& player(manager.getEntitiesByGroup(Player));
 
-    for (auto& p : player)
-    {
-        for (auto& n : npcs)
-        {
-            collisionAABB(*p, *n);
-        }
-    }
+
 
 }
 
