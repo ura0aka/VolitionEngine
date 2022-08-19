@@ -37,11 +37,11 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    this->initNPC();
-    // for(int i {0}; i < 300; ++i)
-    // {
-    //     this->initNPC();
-    // }
+    
+    for(int i {0}; i < 300; ++i)
+    {
+        this->initNPC();
+    }
     
 }
 
@@ -72,7 +72,13 @@ void GameState::updateState(const float& dt)
     auto& npcs(manager.getEntitiesByGroup(NPC));
     auto& player(manager.getEntitiesByGroup(Player));
 
-
+    for (auto& p : player)
+    {
+        for (auto& n : npcs)
+        {
+            collisionAABB(*p, *n);
+        }
+    }
 
 }
 

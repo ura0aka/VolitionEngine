@@ -42,6 +42,7 @@ struct PlayerComponent : Component
         } 
     }
 
+
     void updateComponent(const float& dt) override
     {
         this->updateInput(dt);
@@ -51,4 +52,11 @@ struct PlayerComponent : Component
     {
         targetWin->draw(this->pShape);
     }
+
+    float leftX() const noexcept { return pShape.getGlobalBounds().left; };
+    float rightX() const noexcept { return pShape.getGlobalBounds().left + pShape.getGlobalBounds().width; };
+    float topY() const noexcept { return pShape.getGlobalBounds().top; };
+    float bottomY() const noexcept { return pShape.getGlobalBounds().top + pShape.getGlobalBounds().height; };
+    float heightY() const noexcept { return pShape.getGlobalBounds().height; };
+    float widthX() const noexcept { return pShape.getGlobalBounds().width; };
 };
