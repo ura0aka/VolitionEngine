@@ -24,6 +24,7 @@ void addToGroup(Entity* entity, GroupID group);
 std::vector<Entity*>& getEntitiesByGroup(GroupID group);
 
 // == MAIN FUNCTIONS ==
+void refreshManager();
 void updateManager(const float& dt);
 void renderManager(sf::RenderTarget* targetWin);
 

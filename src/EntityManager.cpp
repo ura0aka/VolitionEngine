@@ -30,7 +30,7 @@ std::vector<Entity*>& EntityManager::getEntitiesByGroup(GroupID group)
 }
 
 // == MAIN FUNCTIONS ==
-void EntityManager::updateManager(const float& dt)
+void EntityManager::refreshManager()
 {
     for (auto i(0u); i < maxGroups; ++i)
     {
@@ -50,18 +50,20 @@ void EntityManager::updateManager(const float& dt)
     // 3. if true, remove dead entity
     mEntityContainer.erase
     (std::remove_if(mEntityContainer.begin(), mEntityContainer.end(),
-    [](const std::unique_ptr<Entity>& entity)
-    {
-        return !entity->isAlive();
-    }),
-    mEntityContainer.end());
+        [](const std::unique_ptr<Entity>& entity)
+        {
+            return !entity->isAlive();
+        }),
+        mEntityContainer.end());
+}
 
+void EntityManager::updateManager(const float& dt)
+{
     // update all entities in container
     for(auto& entity : mEntityContainer)
     {
         entity->updateObj(dt);
     }
-
 }
 
 void EntityManager::renderManager(sf::RenderTarget* targetWin)
