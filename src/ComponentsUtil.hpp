@@ -1,5 +1,5 @@
 #include "Game.hpp"
-
+#include "PlayerComponent.hpp"
 
 // == For testing ==
 std::default_random_engine gen;
@@ -165,6 +165,7 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             std::cout << "bottom_collision \n";
             cPlayerShape.mShape.setPosition(cPlayer.leftX(), cNpc.topY() - cPlayer.heightY());
         }
+
         // top-side collision
         else if (cPlayer.topY() > cNpc.topY() && cPlayer.bottomY() > cNpc.bottomY() &&
             cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
@@ -172,6 +173,7 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             std::cout << "top_collision \n";
             cPlayerShape.mShape.setPosition(cPlayer.leftX(), cNpc.bottomY());
         }
+
         // right side collision
         else if (cPlayer.leftX() < cNpc.leftX() && cPlayer.rightX() < cNpc.rightX() &&
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
@@ -179,6 +181,7 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             std::cout << "right_collision \n";
             cPlayerShape.mShape.setPosition(cNpc.leftX() - cPlayer.widthX(), cPlayer.topY());
         }
+
         else if (cPlayer.leftX() > cNpc.leftX() && cPlayer.rightX() > cNpc.rightX() &&
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
         {
