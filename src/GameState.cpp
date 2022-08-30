@@ -3,15 +3,9 @@
 // == INITIALIZER FUNCTIONS ==
 Entity& GameState::initPlayer()
 {
-    // sf::Vector2f playerSize(10.0f,10.0f);
-    // sf::Color playerColor(sf::Color::Green);
-    // sf::Vector2f playerVelocity(200.0f,200.0f);
+    // initialize our player object
     auto& entity(this->manager.addEntity());
 
-    // entity.addComponent<PositionComponent>(sf::Vector2f(100.0f,100.0f));
-    // entity.addComponent<ShapeComponent>(playerSize,playerColor);
-    // entity.addComponent<PhysicsComponent>(playerVelocity,playerSize);
-    // entity.addComponent<MovementComponent>();
     entity.addComponent<PlayerComponent>(sf::Vector2f(100.0f,100.0f));
 
     entity.addGroup(VolEGroups::Player);
@@ -20,6 +14,7 @@ Entity& GameState::initPlayer()
 
 Entity& GameState::initNPC()
 {
+    // initialize random NPC object
     sf::Vector2f npcSize(30.0f,20.0f);
     sf::Color npcColor(sf::Color(randColorRed(gen),randColorGreen(gen),randColorBlue(gen)));
     sf::Vector2f npcVelocity(0.0f,0.0f);
@@ -37,18 +32,10 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    
-    for(int i {0}; i < 300; ++i)
-    {
-        this->initNPC();
-    }
-    
+    for(int i {0}; i < 300; ++i) { this->initNPC(); }
 }
 
-GameState::~GameState()
-{
-
-}
+GameState::~GameState() {}
 
 // == MAIN FUNCTIONS ==
 void GameState::cleanUpState()
@@ -69,6 +56,7 @@ void GameState::updateState(const float& dt)
     this->updateKeyInputs();
     this->manager.updateManager(dt);
 
+    // == group our entity types ==
     auto& npcs(manager.getEntitiesByGroup(NPC));
     auto& player(manager.getEntitiesByGroup(Player));
 
@@ -79,9 +67,7 @@ void GameState::updateState(const float& dt)
             collisionAABB(*p, *n);
         }
     }
-
 }
-
 
 void GameState::renderState(sf::RenderTarget* targetWin)
 {

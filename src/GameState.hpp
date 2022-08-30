@@ -3,10 +3,12 @@
 #include "State.hpp"
 #include "PlayerComponent.hpp"
 #include "EntityManager.hpp"
+#include "ResourceManager.hpp"
 
 #include <random>
 
 class EntityManager;
+class ResourceManager;
 // == GAME STATE CLASS ==
 // game state class where everything will happen
 class GameState : public State
@@ -15,13 +17,11 @@ private:
 
 // == MANAGERS ==
 EntityManager manager;
-// == COMPONENTS ==
+ResourceManager res_manager;
 
 // == RESOURCES ==
 
-// == GAME OBJECTS ==
-
-// == INITIALIZER FUNCTIONS ==
+// == GAME OBJECT INITIALIZER FUNCTIONS ==
 Entity& initPlayer();
 Entity& initNPC();
 

@@ -9,9 +9,6 @@
 
 class Component;
 
-
-
-
 class Entity
 {
 private:
@@ -23,7 +20,7 @@ std::vector<std::unique_ptr<Component>> mComponentsContainer{};
 
 ComponentArray mComponentArray {}; // stores pointers to its components
 ComponentBitset mComponentBitset {}; // stores the ID of a particular component
-GroupBitset mGroupBitset {};
+GroupBitset mGroupBitset {}; // stores the ID of a particular group entity belongs to
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==

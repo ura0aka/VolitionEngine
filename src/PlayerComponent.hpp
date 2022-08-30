@@ -1,5 +1,7 @@
 #include "Component.hpp"
 
+
+// separate player component with all of its unique sub-components
 struct PlayerComponent : Component
 {
     sf::RectangleShape pShape;
@@ -8,7 +10,6 @@ struct PlayerComponent : Component
     sf::Vector2f pPos;
     sf::Color pColor{sf::Color::Green};
 
-
     PlayerComponent(sf::Vector2f pos) : pPos{pos}
     {
         pShape.setSize(pSize);
@@ -16,7 +17,7 @@ struct PlayerComponent : Component
         pShape.setFillColor(pColor);
     }
 
-
+    
     void updateInput(const float& dt)
     {
         // keyboard input (player movement)

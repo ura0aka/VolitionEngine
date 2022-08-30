@@ -21,7 +21,7 @@ class Entity;
 using ComponentID = std::uint32_t;
 constexpr std::size_t maxComponents{32};
 
-// == group variables ==
+// == GROUP ID SYSTEM ==
 using GroupID = std::uint32_t;
 constexpr std::uint32_t maxGroups{32};
 using GroupBitset = std::bitset<maxGroups>;
@@ -55,13 +55,6 @@ template<typename T> inline ComponentID getComponentTypeID() noexcept
 // == BASE COMPONENT CLASS ==
 class Component
 {
-private:
-
-// component classes will have:
-// *some data
-// *update functions
-// *render functions
-
 public:
 Entity* mEntity{nullptr};
 
@@ -71,10 +64,7 @@ virtual ~Component();
 virtual void initComponent();
 
 // == ACCESSOR FUNCTIONS ==
-void setOwnership(Entity* eOwner)
-{
-this->mEntity = eOwner;
-}
+void setOwnership(Entity* eOwner) { this->mEntity = eOwner; }
 
 // == MAIN FUNCTIONS ==
 virtual void updateComponent(const float& dt);
