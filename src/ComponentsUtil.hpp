@@ -141,7 +141,6 @@ struct MovementComponent : Component
 };
 
 
-
 template <class T1, class T2>
 bool isIntersecting(T1& mObjA, T2& mObjB) noexcept
 {

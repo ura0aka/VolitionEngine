@@ -20,6 +20,7 @@ EntityManager manager;
 ResourceManager res_manager;
 
 // == RESOURCES ==
+sf::Sprite mSprite;
 
 // == GAME OBJECT INITIALIZER FUNCTIONS ==
 Entity& initPlayer();
