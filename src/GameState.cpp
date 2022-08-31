@@ -6,9 +6,9 @@ Entity& GameState::initPlayer()
     // initialize our player object
     auto& entity(this->manager.addEntity());
 
-    entity.addComponent<PlayerComponent>(sf::Vector2f(100.0f,100.0f));
+    entity.addComponent<PlayerComponent>(sf::Vector2f(100.0f,100.0f),sf::Texture(this->res_manager.loadTexture("res/textures/botamon.png")));
 
-    this->mSprite.setTexture(this->res_manager.loadTexture("res/textures/botamon.png"));
+    // this->mSprite.setTexture(this->res_manager.loadTexture("res/textures/botamon.png"));
 
     entity.addGroup(VolEGroups::Player);
     return entity;
@@ -36,7 +36,7 @@ Entity& GameState::initNPC()
 GameState::GameState(sf::RenderWindow* Win) : State(Win)
 {
     this->initPlayer();
-    for(int i {0}; i < 300; ++i) { this->initNPC(); }
+    for(int i {0}; i < 10; ++i) { this->initNPC(); }
 }
 
 GameState::~GameState() {}
