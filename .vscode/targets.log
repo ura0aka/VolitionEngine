@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 31 07:55:34 2022
+# Make data base, printed on Fri Sep 02 07:21:25 2022
 
 # Variables
 
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14392_ASYGSPVXNPAKNQGS
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13840_KKTHTKWJNNCZBIWL
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -53,7 +53,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
 LANG = C
 # default
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 14392
+VSCODE_PID = 13840
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -155,6 +155,8 @@ GNUMAKEFLAGS :=
 # environment
 OS = Windows_NT
 # environment
+__COMPAT_LAYER = DetectorsAppHealth
+# environment
 AMDRMSDKPATH = C:\Program Files\AMD\RyzenMasterSDK\
 # makefile
 .DEFAULT_GOAL := 
@@ -185,7 +187,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\maxge\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.70.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.71.0-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -205,7 +207,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 # environment
 VCPKG_DEFAULT_TRIPLET = x64-windows
 # variable set hash-table stats:
-# Load=96/1024=9%, Rehash=0, Collisions=8/121=7%
+# Load=97/1024=9%, Rehash=0, Collisions=8/122=7%
 
 # Pattern-specific Variable Values
 
@@ -213,8 +215,7 @@ VCPKG_DEFAULT_TRIPLET = x64-windows
 
 # Directories
 
-# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 166 
-1907354): 7 files, no impossibilities.
+# . (key d:/Users/maxge/Code/Projects/VolitionEngine, mtime 1661907354): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -263,7 +264,8 @@ GNUmakefile:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Failed to be updated.
+#  Failed to be  
+updated.
 
 # files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
@@ -279,6 +281,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Wed Aug 31 07:55:34 2022
+# Finished Make data base on Fri Sep 02 07:21:25 2022
 
  

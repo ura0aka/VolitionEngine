@@ -134,6 +134,7 @@ void Game::pollEvents()
 void Game::updateAll(const float& dt)
 {
     this->pollEvents();
+    
 
     // for game states
     if(!this->mStatesContainer.empty())

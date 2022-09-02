@@ -29,6 +29,7 @@ private:
     // == RESOURCES ==
     std::stack<State*> mStatesContainer;
 
+
     // == EVENT VARIABLES ==
     sf::Event mEvent;
 
