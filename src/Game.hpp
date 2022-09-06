@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "GameState.hpp"
+#include "MainMenuState.hpp"
 
 
 struct CounterComponent;

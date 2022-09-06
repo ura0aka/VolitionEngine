@@ -10,7 +10,8 @@ void Game::initVars()
 void Game::initState()
 {
     // push newly created state to stack (LIFO)
-    this->mStatesContainer.push(new GameState(this->mWindow)); 
+    this->mStatesContainer.push(new GameState(this->mWindow));
+    this->mStatesContainer.push(new MainMenuState(this->mWindow)); 
 }
 
 void Game::initWindow()

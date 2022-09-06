@@ -163,7 +163,7 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
         {
             std::cout << "bottom_collision \n";
-            cPlayer.pSprite.setPosition(cPlayer.leftX(), cNpc.topY() - cPlayer.heightY());
+            cPlayer.pShape.setPosition(cPlayer.leftX(), cNpc.topY() - cPlayer.heightY());
         }
 
         // top-side collision
@@ -171,7 +171,7 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             cPlayer.leftX() < cNpc.rightX() && cPlayer.rightX() > cNpc.leftX())
         {
             std::cout << "top_collision \n";
-            cPlayer.pSprite.setPosition(cPlayer.leftX(), cNpc.bottomY());
+            cPlayer.pShape.setPosition(cPlayer.leftX(), cNpc.bottomY());
         }
 
         // right side collision
@@ -179,14 +179,14 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
         {
             std::cout << "right_collision \n";
-            cPlayer.pSprite.setPosition(cNpc.leftX() - cPlayer.widthX(), cPlayer.topY());
+            cPlayer.pShape.setPosition(cNpc.leftX() - cPlayer.widthX(), cPlayer.topY());
         }
 
         else if (cPlayer.leftX() > cNpc.leftX() && cPlayer.rightX() > cNpc.rightX() &&
             cPlayer.topY() < cNpc.bottomY() && cPlayer.bottomY() > cNpc.topY())
         {
             std::cout << "left_collision \n";
-            cPlayer.pSprite.setPosition(cNpc.rightX(), cPlayer.topY());
+            cPlayer.pShape.setPosition(cNpc.rightX(), cPlayer.topY());
         }
 
 

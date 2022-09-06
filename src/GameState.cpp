@@ -18,9 +18,9 @@ Entity& GameState::initPlayer()
     // initialize our player object
     auto& entity(this->manager.addEntity());
 
-    entity.addComponent<PlayerComponent>
-    (sf::Vector2f(100.0f,100.0f),
-    sf::Texture(this->res_manager.loadTexture("res/textures/botamon.png")));
+    entity.addComponent<PlayerComponent>(sf::Vector2f(100.0f, 100.0f));
+    //(sf::Vector2f(100.0f, 100.0f),
+    //sf::Texture(this->res_manager.loadTexture("res/textures/botamon.png")));
  
     entity.addGroup(VolEGroups::Player);
     return entity;
@@ -33,8 +33,6 @@ Entity& GameState::initNPC()
     sf::Color npcColor(sf::Color(randColorRed(gen),randColorGreen(gen),randColorBlue(gen)));
     sf::Vector2f npcVelocity(0.0f,0.0f);
     auto& entity(this->manager.addEntity());
-
-    
 
     entity.addComponent<PositionComponent>(sf::Vector2f(randPosx(gen),randPosy(gen)));
     entity.addComponent<ShapeComponent>(npcSize,npcColor);

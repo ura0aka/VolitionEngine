@@ -9,16 +9,16 @@ struct PlayerComponent : Component
     sf::Vector2f pMovVelocity{200.0f, 200.0f};
     sf::Vector2f pPos;
     sf::Color pColor{sf::Color::Green};
+    sf::RectangleShape pShape;
+    // sf::Texture pTexture;
+    
 
-    sf::Texture pTexture;
-    sf::Sprite pSprite;
-
-    PlayerComponent(sf::Vector2f pos, sf::Texture texture) : pPos{pos}, pTexture{texture}
+    PlayerComponent(sf::Vector2f pos) : pPos{pos}
     {
-        pSprite.setScale(0.2f,0.2f);
-        pSprite.setPosition(pPos);
-        // pSprite.setFillColor(pColor);
-        pSprite.setTexture(pTexture);
+        pShape.setPosition(pPos);
+        pShape.setFillColor(pColor);
+        pShape.setSize(pSize);
+        // pSprite.setTexture(pTexture);
     }
 
     
@@ -28,22 +28,22 @@ struct PlayerComponent : Component
         // forward (W)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            this->pSprite.move(0.0f, dt * -(this->pMovVelocity.y));
+            this->pShape.move(0.0f, dt * -(this->pMovVelocity.y));
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            this->pSprite.move(0.0f, dt * this->pMovVelocity.y);
+            this->pShape.move(0.0f, dt * this->pMovVelocity.y);
         }
         // left (A)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            this->pSprite.move(-(dt * this->pMovVelocity.x), 0.0f);
+            this->pShape.move(-(dt * this->pMovVelocity.x), 0.0f);
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            this->pSprite.move(dt * this->pMovVelocity.x, 0.0f);
+            this->pShape.move(dt * this->pMovVelocity.x, 0.0f);
         } 
     }
 
@@ -55,13 +55,13 @@ struct PlayerComponent : Component
 
     void renderComponent(sf::RenderTarget* targetWin) override
     {
-        targetWin->draw(this->pSprite);
+        targetWin->draw(this->pShape);
     }
 
-    float leftX() const noexcept { return pSprite.getGlobalBounds().left; };
-    float rightX() const noexcept { return pSprite.getGlobalBounds().left + pSprite.getGlobalBounds().width; };
-    float topY() const noexcept { return pSprite.getGlobalBounds().top; };
-    float bottomY() const noexcept { return pSprite.getGlobalBounds().top + pSprite.getGlobalBounds().height; };
-    float heightY() const noexcept { return pSprite.getGlobalBounds().height; };
-    float widthX() const noexcept { return pSprite.getGlobalBounds().width; };
+    float leftX() const noexcept { return pShape.getGlobalBounds().left; };
+    float rightX() const noexcept { return pShape.getGlobalBounds().left + pShape.getGlobalBounds().width; };
+    float topY() const noexcept { return pShape.getGlobalBounds().top; };
+    float bottomY() const noexcept { return pShape.getGlobalBounds().top + pShape.getGlobalBounds().height; };
+    float heightY() const noexcept { return pShape.getGlobalBounds().height; };
+    float widthX() const noexcept { return pShape.getGlobalBounds().width; };
 };
