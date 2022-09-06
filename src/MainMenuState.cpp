@@ -23,6 +23,7 @@ void MainMenuState::updateKeyInputs()
     this->checkEndState();
 }
 
+
 void MainMenuState::checkEndState()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -35,7 +36,9 @@ void MainMenuState::checkEndState()
 void MainMenuState::updateState(const float& dt) 
 {
     this->updateKeyInputs();
+    this->updateMousePositions();
 }
+
 
 void MainMenuState::renderState(sf::RenderTarget* targetWin)
 {

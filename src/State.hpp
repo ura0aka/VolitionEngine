@@ -18,6 +18,11 @@ protected:
 // == WINDOW VARIABLES ==
 sf::RenderWindow* mWindow;
 
+sf::Vector2i mMousePosScreen;
+sf::Vector2i mMousePosWin;
+sf::Vector2f mMousePosView;
+
+
 // == RESOURCES ==
 std::vector<sf::Texture*> mTextureContainer;
 
@@ -36,6 +41,7 @@ const bool getEndState() const;
 virtual void checkEndState(); 
 
 virtual void cleanUpState() = 0;
+virtual void updateMousePositions();
 virtual void updateKeyInputs() = 0;
 virtual void updateState(const float& dt) = 0;
 virtual void renderState(sf::RenderTarget* targetWin = nullptr) = 0;
