@@ -23,6 +23,15 @@ void MainMenuState::updateKeyInputs()
     this->checkEndState();
 }
 
+void MainMenuState::checkEndState()
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+        this->cleanUpState();
+        this->mQuitState = true;
+    }
+}
+
 void MainMenuState::updateState(const float& dt) 
 {
     this->updateKeyInputs();

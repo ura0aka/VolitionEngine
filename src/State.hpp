@@ -33,7 +33,7 @@ virtual ~State();
 const bool getEndState() const;
 
 // == MAIN FUNCTIONS ==
-void checkEndState(); 
+virtual void checkEndState(); 
 
 virtual void cleanUpState() = 0;
 virtual void updateKeyInputs() = 0;
