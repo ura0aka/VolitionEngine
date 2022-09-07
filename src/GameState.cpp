@@ -94,6 +94,7 @@ void GameState::updateState(const float& dt)
         }
     }
     
+    //this->updateMousePositions();
     this->updateKeyInputs();
     this->updateUIText(dt);
 }

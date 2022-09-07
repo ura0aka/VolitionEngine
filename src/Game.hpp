@@ -27,6 +27,9 @@ private:
     sf::RenderWindow* mWindow;
     sf::VideoMode mVideoMode;
 
+    sf::Vector2i mMousePosWin;
+    sf::Vector2f mMousePosView;
+
     // == RESOURCES ==
     std::stack<State*> mStatesContainer;
 
@@ -57,6 +60,7 @@ public:
     const bool gameStatus() const;
     float getElapsedSeconds();
     float getElapsedMilliseconds();
+    void updateMousePositions();
     sf::RenderWindow* getWindow() { return this->mWindow; }
 
     // == EVENT HANDLING ==

@@ -10,7 +10,7 @@ void Game::initVars()
 void Game::initState()
 {
     // push newly created state to stack (LIFO)
-    // this->mStatesContainer.push(new MainMenuState(this->mWindow)); 
+    this->mStatesContainer.push(new MainMenuState(this->mWindow)); 
     this->mStatesContainer.push(new GameState(this->mWindow));
 }
 
@@ -132,9 +132,18 @@ void Game::pollEvents()
 
 // == LOOP ==
 // == UPDATE FUNCTIONS ==
+void Game::updateMousePositions()
+{
+    this->mMousePosWin = sf::Mouse::getPosition(*this->mWindow);
+    this->mMousePosView = this->mWindow->mapPixelToCoords(this->mMousePosWin);
+
+    std::cout << "(" << mMousePosView.x << "," << mMousePosView.y << ") \n";
+}
+
 void Game::updateAll(const float& dt)
 {
     this->pollEvents();
+    this->updateMousePositions();
     
 
     // for game states
