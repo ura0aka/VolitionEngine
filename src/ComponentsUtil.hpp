@@ -88,6 +88,7 @@ struct PhysicsComponent : Component
     float bottomY() const noexcept { return mShape->getGlobalBounds().top + mShape->getGlobalBounds().height; };
     float heightY() const noexcept { return mShape->getGlobalBounds().height; };
     float widthX() const noexcept { return mShape->getGlobalBounds().width; };
+    sf::FloatRect ShapeBounds() const noexcept { return mShape->getGlobalBounds(); };
 };
 
 
@@ -188,10 +189,23 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             std::cout << "left_collision \n";
             cPlayer.pShape.setPosition(cNpc.rightX(), cPlayer.topY());
         }
-
-
     }
+}
 
+
+// FIXME: @line 203 
+bool isClicked(Entity& mNpc, sf::RenderWindow* mWin)
+{
+    sf::Vector2i mMousePosWin; 
+    sf::Vector2f mMousePosView;
+
+    mMousePosWin = sf::Mouse::getPosition(*mWin);
+    mMousePosView = mWin->mapPixelToCoords(mMousePosWin); //throws exception, cannot access sf::RenderWindow from here it seems ...
+
+    auto& cNpc(mNpc.getComponent<PhysicsComponent>());
+
+    if(cNpc.ShapeBounds().contains(mMousePosView)) { return true; }
+    else { return false; }
 }
 
 enum VolEGroups : std::uint32_t

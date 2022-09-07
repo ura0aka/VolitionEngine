@@ -61,6 +61,7 @@ public:
     float getElapsedSeconds();
     float getElapsedMilliseconds();
     void updateMousePositions();
+    sf::Vector2f getMousePosView() { return this->mMousePosView; }
     sf::RenderWindow* getWindow() { return this->mWindow; }
 
     // == EVENT HANDLING ==

@@ -30,6 +30,8 @@ void initText();
 Entity& initPlayer();
 Entity& initNPC();
 
+bool mMouseHeld;
+
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
 GameState(sf::RenderWindow* Win);
