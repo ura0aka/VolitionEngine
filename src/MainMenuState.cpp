@@ -35,6 +35,7 @@ void MainMenuState::checkEndState()
 
 void MainMenuState::updateState(const float& dt) 
 {
+    this->updateMousePosition();
     this->updateKeyInputs();
 }
 

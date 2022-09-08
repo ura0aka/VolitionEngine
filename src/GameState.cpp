@@ -98,7 +98,7 @@ void GameState::updateState(const float& dt)
                 {
                     this->mMouseHeld = true;
                     bool pKill {false};
-                    if(isClicked(*n, this->mWindow))
+                    if(isClicked(*n, mWindow))
                     {
                         pKill = true;
                         n->destroyObj();
@@ -109,9 +109,7 @@ void GameState::updateState(const float& dt)
         }
     }
 
-
-    
-    //this->updateMousePositions();
+    this->updateMousePosition();
     this->updateKeyInputs();
     this->updateUIText(dt);
 }

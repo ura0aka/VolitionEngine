@@ -14,12 +14,14 @@
 
 class State
 {
+private:
+
 protected:
 // == WINDOW VARIABLES ==
 sf::RenderWindow* mWindow;
 
-// == RESOURCES ==
-std::vector<sf::Texture*> mTextureContainer;
+sf::Vector2i mMousePosWin;
+sf::Vector2f mMousePosView;
 
 // == LOGIC ==
 bool mQuitState;
@@ -37,6 +39,7 @@ virtual void checkEndState();
 
 virtual void cleanUpState() = 0;
 virtual void updateKeyInputs() = 0;
+virtual void updateMousePosition();
 virtual void updateState(const float& dt) = 0;
 virtual void renderState(sf::RenderTarget* targetWin = nullptr) = 0;
 

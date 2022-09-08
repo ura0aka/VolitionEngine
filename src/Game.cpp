@@ -46,8 +46,8 @@ Game::Game()
     this->mState = INITIALIZING;
 
     this->initVars();
-    this->initState();
     this->initWindow();
+    this->initState();
 }
 
 Game::~Game()
@@ -132,18 +132,9 @@ void Game::pollEvents()
 
 // == LOOP ==
 // == UPDATE FUNCTIONS ==
-void Game::updateMousePositions()
-{
-    this->mMousePosWin = sf::Mouse::getPosition(*this->mWindow);
-    this->mMousePosView = this->mWindow->mapPixelToCoords(this->mMousePosWin);
-
-    std::cout << "(" << mMousePosView.x << "," << mMousePosView.y << ") \n";
-}
-
 void Game::updateAll(const float& dt)
 {
     this->pollEvents();
-    this->updateMousePositions();
     
 
     // for game states

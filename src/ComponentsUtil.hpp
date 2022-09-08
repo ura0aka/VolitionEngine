@@ -199,8 +199,8 @@ bool isClicked(Entity& mNpc, sf::RenderWindow* mWin)
     sf::Vector2i mMousePosWin; 
     sf::Vector2f mMousePosView;
 
-    mMousePosWin = sf::Mouse::getPosition(*mWin);
-    mMousePosView = mWin->mapPixelToCoords(mMousePosWin); //throws exception, cannot access sf::RenderWindow from here it seems ...
+    mMousePosWin = sf::Mouse::getPosition(*mWin); //throws exception, cannot access sf::RenderWindow from here it seems ...
+    mMousePosView = mWin->mapPixelToCoords(mMousePosWin); 
 
     auto& cNpc(mNpc.getComponent<PhysicsComponent>());
 

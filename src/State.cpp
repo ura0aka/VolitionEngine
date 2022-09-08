@@ -19,6 +19,14 @@ const bool State::getEndState() const
 }
 
 // == MAIN FUNCTIONS ==
+void State::updateMousePosition()
+{
+    this->mMousePosWin = sf::Mouse::getPosition(*this->mWindow);
+    this->mMousePosView = this->mWindow->mapPixelToCoords(this->mMousePosWin);
+
+    std::cout << "(" << mMousePosView.x << "," << mMousePosView.y << ") \n";
+}
+
 void State::checkEndState()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
