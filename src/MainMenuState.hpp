@@ -8,6 +8,12 @@ class MainMenuState : public State
 
 private:
 
+// == RESOURCES ==
+Button* mMMButton;
+sf::Font mFont;
+
+// == INITIALIZER FUNCTIONS ==
+void initFont();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
