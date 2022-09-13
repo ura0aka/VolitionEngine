@@ -16,8 +16,8 @@ Button::Button(float x, float y, float width, float height,
     this->mText.setFillColor(sf::Color::White);
     this->mText.setCharacterSize(12);
     this->mText.setPosition(
-        this->mButtonShape.getPosition().x / 2.0f - this->mText.getGlobalBounds().width / 2.0f,
-        this->mButtonShape.getPosition().y / 2.0f - this->mText.getGlobalBounds().height / 2.0f
+        this->mButtonShape.getPosition().x + (this->mButtonShape.getGlobalBounds().width / 2.0f) - this->mText.getGlobalBounds().width / 2.0f,
+        this->mButtonShape.getPosition().y + (this->mButtonShape.getGlobalBounds().height / 2.0f) - this->mText.getGlobalBounds().height / 2.0f
     );
 
     this->mIdleColor = idle;
@@ -79,9 +79,9 @@ void Button::updateButton(const sf::Vector2f mousePos)
     }
 }
 
-
 void Button::renderButton(sf::RenderTarget* targetWin)
 {
     targetWin->draw(this->mButtonShape);
+    targetWin->draw(this->mText);
      
 }
