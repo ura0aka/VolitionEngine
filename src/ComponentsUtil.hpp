@@ -141,7 +141,6 @@ struct MovementComponent : Component
 
 };
 
-
 template <class T1, class T2>
 bool isIntersecting(T1& mObjA, T2& mObjB) noexcept
 {
@@ -190,22 +189,6 @@ void collisionAABB(Entity& mPlayer, Entity& mNpc)
             cPlayer.pShape.setPosition(cNpc.rightX(), cPlayer.topY());
         }
     }
-}
-
-
-// FIXME: @line 203 
-bool isClicked(Entity& mNpc, sf::RenderWindow* mWin)
-{
-    sf::Vector2i mMousePosWin; 
-    sf::Vector2f mMousePosView;
-
-    mMousePosWin = sf::Mouse::getPosition(*mWin); //throws exception, cannot access sf::RenderWindow from here it seems ...
-    mMousePosView = mWin->mapPixelToCoords(mMousePosWin); 
-
-    auto& cNpc(mNpc.getComponent<PhysicsComponent>());
-
-    if(cNpc.ShapeBounds().contains(mMousePosView)) { return true; }
-    else { return false; }
 }
 
 enum VolEGroups : std::uint32_t

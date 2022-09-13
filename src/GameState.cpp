@@ -51,7 +51,7 @@ GameState::GameState(sf::RenderWindow* Win) : State(Win)
 
     this->mMouseHeld = false;
     this->initPlayer();
-    for(int i {0}; i < 100; ++i) { this->initNPC(); }
+    for(int i {0}; i < 10; ++i) { this->initNPC(); }
 }
 
 GameState::~GameState() {}
@@ -92,22 +92,9 @@ void GameState::updateState(const float& dt)
         for (auto& n : npcs)
         {
             collisionAABB(*p, *n);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            {
-                if(this->mMouseHeld == false)
-                {
-                    this->mMouseHeld = true;
-                    bool pKill {false};
-                    if(isClicked(*n, mWindow))
-                    {
-                        pKill = true;
-                        n->destroyObj();
-                    }
-                }
-            }
-            else { this->mMouseHeld = false; }
         }
     }
+
 
     this->updateMousePosition();
     this->updateKeyInputs();
