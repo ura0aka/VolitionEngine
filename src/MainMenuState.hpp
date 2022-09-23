@@ -12,8 +12,11 @@ private:
 Button* mMMButton;
 sf::Font mFont;
 
+std::map<std::string, Button*> mButtonContainer;
+
 // == INITIALIZER FUNCTIONS ==
 void initFont();
+void initButtons();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
@@ -24,7 +27,9 @@ virtual ~MainMenuState();
 void cleanUpState() override;
 void updateKeyInputs() override;
 void checkEndState() override;
+void updateButtons();
 void updateState(const float& dt) override;
+void renderButtons(sf::RenderTarget* targetWin);
 void renderState(sf::RenderTarget* targetWin) override;
 
 

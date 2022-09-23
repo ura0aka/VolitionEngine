@@ -6,18 +6,30 @@ void MainMenuState::initFont()
     this->mFont.loadFromFile("res/fonts/Perfect DOS VGA 437 Win.ttf");
 }
 
+void MainMenuState::initButtons()
+{
+    
+    this->mButtonContainer["MM_BTN"] = new Button(100,100,150,150,&this->mFont, "New Game",sf::Color::White, sf::Color::Green, sf::Color::Magenta);
+    std::cout << "created button" << std::endl;
+}
+
 // == CONSTRUCTOR/DESTRUCTOR ==
 MainMenuState::MainMenuState(sf::RenderWindow* Win) : State(Win) 
 {
+
     std::cout << "pushed main menu state" << '\n';
-    this->mMMButton = new Button(100,100,150,150,
-                                &this->mFont, "New Game",
-                                sf::Color::White, sf::Color::Green, sf::Color::Magenta);
+    this->initFont();
+    this->initButtons();
+    
 }
 
 MainMenuState::~MainMenuState() 
 {
-    delete this->mMMButton;
+    // iterate over buttons container and delete all button object
+    for(auto const& button : mButtonContainer)
+    {
+        delete button.second;
+    }
 }
 
 
@@ -35,6 +47,14 @@ void MainMenuState::updateKeyInputs()
     this->checkEndState();
 }
 
+void MainMenuState::updateButtons()
+{
+    for(auto const& button : mButtonContainer)
+    {
+        button.second->updateButton(this->mMousePosView);
+    }
+
+}
 
 void MainMenuState::checkEndState()
 {
@@ -49,11 +69,17 @@ void MainMenuState::updateState(const float& dt)
 {
     this->updateMousePosition();
     this->updateKeyInputs();
-    this->mMMButton->updateButton(this->mMousePosView);
+    this->updateButtons();
 }
 
-
+void MainMenuState::renderButtons(sf::RenderTarget* targetWin)
+{
+    for(auto const& button : mButtonContainer)
+    {
+        button.second->renderButton(targetWin);
+    }
+}
 void MainMenuState::renderState(sf::RenderTarget* targetWin)
 {
-    this->mMMButton->renderButton(targetWin);
+    this->renderButtons(targetWin);
 }
