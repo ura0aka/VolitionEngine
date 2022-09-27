@@ -23,12 +23,15 @@ sf::RenderWindow* mWindow;
 sf::Vector2i mMousePosWin;
 sf::Vector2f mMousePosView;
 
+// stack of game state stack pointer
+std::stack<State*>* mStatesPtr_Stack;
+
 // == LOGIC ==
 bool mQuitState;
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
-State(sf::RenderWindow* Win);
+State(sf::RenderWindow* Win, std::stack<State*>* States);
 virtual ~State();
 
 // == ACCESSOR FUNCTIONS ==

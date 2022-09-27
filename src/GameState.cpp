@@ -43,7 +43,7 @@ Entity& GameState::initNPC()
 }
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-GameState::GameState(sf::RenderWindow* Win) : State(Win)
+GameState::GameState(sf::RenderWindow* Win, std::stack<State*>* States) : State(Win,States)
 {
     std::cout << "pushed game state" << '\n';
     this->initFonts();

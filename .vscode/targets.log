@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Sep 23 10:19:49 2022
+# Make data base, printed on Tue Sep 27 10:35:20 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ USERPROFILE = C:\Users\maxge
 # environment
 LOCALAPPDATA = C:\Users\maxge\AppData\Local
 # environment
-VSCODE_CWD = C:\Windows\system32
+VSCODE_CWD = C:\Users\maxge\AppData\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9744_XQXENYDIWRWVBZUI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_5952_XSNHBAJIGHNNAFRC
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 9744
+VSCODE_PID = 5952
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -278,6 +278,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Fri Sep 23 10:19:49 2022
+# Finished Make data base on Tue Sep 27 10:35:20 2022
 
  

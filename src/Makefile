@@ -1,5 +1,5 @@
 #compiler variable
-CC = g++
+CC = g++ -std=c++17
 INCL = -Isfml/include
 LIBS = -Lsfml/lib -lsfml-graphics -lsfml-window -lsfml-system
 #optimization variable

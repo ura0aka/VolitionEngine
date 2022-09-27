@@ -9,14 +9,15 @@ void MainMenuState::initFont()
 void MainMenuState::initButtons()
 {
     
-    this->mButtonContainer["MM_BTN"] = new Button(100,100,150,150,&this->mFont, "New Game",sf::Color::White, sf::Color::Green, sf::Color::Magenta);
-    std::cout << "created button" << std::endl;
+    this->mButtonContainer["MM_NEWGAME_BTN"] = new Button(200,100,300,150,&this->mFont, "New Game",sf::Color::White, sf::Color::Green, sf::Color::Magenta);
+    this->mButtonContainer["MM_EXIT_BTN"] = new Button(200, 300, 300, 150, &this->mFont, "Quit", sf::Color::White, sf::Color::Green, sf::Color::Magenta);
+
+    
 }
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-MainMenuState::MainMenuState(sf::RenderWindow* Win) : State(Win) 
+MainMenuState::MainMenuState(sf::RenderWindow* Win, std::stack<State*>* States) : State(Win,States)
 {
-
     std::cout << "pushed main menu state" << '\n';
     this->initFont();
     this->initButtons();
@@ -52,6 +53,18 @@ void MainMenuState::updateButtons()
     for(auto const& button : mButtonContainer)
     {
         button.second->updateButton(this->mMousePosView);
+    }
+
+    // push new game state
+    if (this->mButtonContainer["MM_NEWGAME_BTN"]->isPressed())
+    {
+        this->mStatesPtr_Stack->push(new GameState(this->mWindow, this->mStatesPtr_Stack));
+    }
+
+    // quit game
+    if (this->mButtonContainer["MM_EXIT_BTN"]->isPressed())
+    {
+        this->mQuitState = true;
     }
 
 }

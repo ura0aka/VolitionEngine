@@ -1,10 +1,11 @@
 #include "State.hpp"
 
 // == CONSTRUCTOR/DESTRUCTOR ==
-State::State(sf::RenderWindow* Win)
+State::State(sf::RenderWindow* Win, std::stack<State*>* States)
 {
     this->mWindow = Win;
     this->mQuitState = false;
+    this->mStatesPtr_Stack = States;
 }
 
 State::~State()

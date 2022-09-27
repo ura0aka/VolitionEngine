@@ -2,6 +2,7 @@
 
 #include "State.hpp"
 #include "Button.hpp"
+#include "GameState.hpp"
 
 class MainMenuState : public State
 {
@@ -20,7 +21,7 @@ void initButtons();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
-MainMenuState(sf::RenderWindow* Win);
+MainMenuState(sf::RenderWindow* Win, std::stack<State*>* States);
 virtual ~MainMenuState();
 
 // == MAIN FUNCTIONS ==

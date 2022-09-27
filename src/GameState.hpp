@@ -34,7 +34,7 @@ bool mMouseHeld;
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==
-GameState(sf::RenderWindow* Win);
+GameState(sf::RenderWindow* Win, std::stack<State*>* States);
 virtual ~GameState();
 
 // == MAIN FUNCTIONS ==
