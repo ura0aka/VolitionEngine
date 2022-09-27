@@ -17,11 +17,15 @@ void Game::initWindow()
 {
     // create a window using settings in conf/window.ini
     std::ifstream win_config("conf/window.ini");
+    this->mVideoModesContainer = sf::VideoMode::getFullscreenModes(); // will return all supported video modes for the local machine
+
 
     std::string w_title = "Null";
     sf::VideoMode window_bounds(800,800);
+    bool fullscreen = false;
     unsigned int framerate_max = 120;
     bool vsync_status = false;
+    unsigned int antialiasing_level = 0;
 
     if(!win_config.is_open())
     {
@@ -29,12 +33,16 @@ void Game::initWindow()
     }
     std::getline(win_config,w_title);
     win_config >> window_bounds.width >> window_bounds.height;
+    win_config >> fullscreen;
     win_config >> framerate_max;
     win_config >> vsync_status;
+    win_config >> antialiasing_level;
 
     win_config.close();
 
-    this->mWindow = new sf::RenderWindow(window_bounds, w_title, sf::Style::Titlebar | sf::Style::Close);
+    this->mWindowSettings.antialiasingLevel = antialiasing_level;
+    this->mWindow = new sf::RenderWindow(window_bounds, w_title, sf::Style::Titlebar | sf::Style::Close, this->mWindowSettings);
+    
     this->mWindow->setFramerateLimit(framerate_max);
     this->mWindow->setVerticalSyncEnabled(vsync_status);
 }
@@ -110,16 +118,6 @@ void Game::pollEvents()
                 this->mWindow->close();
                 break;
             }
-
-            // // if esc key is pressed, close window
-            // case sf::Event::KeyPressed:
-            // {
-            //     if(mEvent.key.code == sf::Keyboard::Escape)
-            //     {
-            //         this->mWindow->close();
-            //     }
-            //     break;
-            // }
 
             default:
             {

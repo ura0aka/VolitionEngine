@@ -8,11 +8,8 @@ void MainMenuState::initFont()
 
 void MainMenuState::initButtons()
 {
-    
     this->mButtonContainer["MM_NEWGAME_BTN"] = new Button(200,100,300,150,&this->mFont, "New Game",sf::Color::White, sf::Color::Green, sf::Color::Magenta);
     this->mButtonContainer["MM_EXIT_BTN"] = new Button(200, 300, 300, 150, &this->mFont, "Quit", sf::Color::White, sf::Color::Green, sf::Color::Magenta);
-
-    
 }
 
 // == CONSTRUCTOR/DESTRUCTOR ==
@@ -26,7 +23,7 @@ MainMenuState::MainMenuState(sf::RenderWindow* Win, std::stack<State*>* States) 
 
 MainMenuState::~MainMenuState() 
 {
-    // iterate over buttons container and delete all button object
+    // iterate over buttons container and delete all button objects
     for(auto const& button : mButtonContainer)
     {
         delete button.second;

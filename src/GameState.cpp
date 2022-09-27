@@ -51,7 +51,7 @@ GameState::GameState(sf::RenderWindow* Win, std::stack<State*>* States) : State(
 
     this->mMouseHeld = false;
     this->initPlayer();
-    for(int i {0}; i < 10; ++i) { this->initNPC(); }
+    for(int i {0}; i < 100; ++i) { this->initNPC(); }
 }
 
 GameState::~GameState() {}

@@ -4,6 +4,9 @@
 #include "Button.hpp"
 #include "GameState.hpp"
 
+
+// Main Menu state where we will be pushing all other states to 
+// (ex: we will push the Game State first when we press "New Game")
 class MainMenuState : public State
 {
 

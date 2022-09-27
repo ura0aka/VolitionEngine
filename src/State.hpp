@@ -23,7 +23,12 @@ sf::RenderWindow* mWindow;
 sf::Vector2i mMousePosWin;
 sf::Vector2f mMousePosView;
 
-// stack of game state stack pointer
+/*
+* HERE WE HAVE A STACK OF A POINTER OF A STACK (from Game.hpp)
+	we send in the stack from the Game class to the
+	MainMenuState class so that it keeps track of it
+	and we push new states from the main menu that way
+*/
 std::stack<State*>* mStatesPtr_Stack;
 
 // == LOGIC ==

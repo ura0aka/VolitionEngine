@@ -25,7 +25,8 @@ class Game
 private:
     // == WINDOW VARIABLES ==
     sf::RenderWindow* mWindow;
-    sf::VideoMode mVideoMode;
+    std::vector<sf::VideoMode> mVideoModesContainer;
+    sf::ContextSettings mWindowSettings;
 
     // == RESOURCES ==
     std::stack<State*> mStatesContainer;
