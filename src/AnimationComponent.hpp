@@ -10,8 +10,8 @@ class AnimationComponent
 {
 private:
 
-	static constexpr int nFrames = 8;
-	static constexpr float nHoldTime = 0.1f;
+	static constexpr int nFrames = 12;
+	static constexpr float nHoldTime = 0.07f;
 	int iFrame = 0;
 	float iFrameTime = 0.0f;
 
@@ -19,12 +19,15 @@ private:
 	sf::IntRect mFrames[nFrames];
 	
 public:
+
+	AnimationComponent() = default;
+	
 	AnimationComponent(int x, int y, int width, int height)
 	{
-		aTexture.loadFromFile("res/textures/drifter_walk_cycle.png");
-		for (int i{ 0 }; i < nFrames; ++i)
+		aTexture.loadFromFile("res/textures/drifter_walk_cycle_full.png");
+		for (int i{ 0 }; i < nFrames; i++)
 		{
-			mFrames[i] = { x + i * width, y, x + (i + 1) * width, y + height };
+			mFrames[i] = { x + i * width, y, width, height};
 		}
 	}
 
