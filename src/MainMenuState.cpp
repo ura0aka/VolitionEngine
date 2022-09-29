@@ -1,6 +1,6 @@
 #include "MainMenuState.hpp"
 
-// == INITIALIZER FUCNTIONS ==
+// == INITIALIZER FUNCTIONS ==
 void MainMenuState::initFont()
 {
     this->mFont.loadFromFile("res/fonts/Perfect DOS VGA 437 Win.ttf");
@@ -8,14 +8,23 @@ void MainMenuState::initFont()
 
 void MainMenuState::initButtons()
 {
-    this->mButtonContainer["MM_NEWGAME_BTN"] = new Button(200,100,300,150,&this->mFont, "New Game",sf::Color::White, sf::Color::Green, sf::Color::Magenta);
-    this->mButtonContainer["MM_EXIT_BTN"] = new Button(200, 300, 300, 150, &this->mFont, "Quit", sf::Color::White, sf::Color::Green, sf::Color::Magenta);
+    this->mButtonContainer["MM_NEWGAME_BTN"] = new Button(300, 100, 300, 100, &this->mFont, "New State", sf::Color(80, 73, 69, 200), sf::Color(177, 98, 134, 200), sf::Color(204, 36, 29, 200));
+    this->mButtonContainer["MM_EXIT_BTN"] = new Button(300, 300, 300, 100, &this->mFont, "Quit", sf::Color(80, 73, 69, 200), sf::Color(177, 98, 134, 200), sf::Color(204, 36, 29, 200));
+}
+
+void MainMenuState::initBG()
+{
+    this->mBackground.setSize(sf::Vector2f(this->mWindow->getSize().x, this->mWindow->getSize().y));
+
+    this->mBackgroundTex.loadFromFile("res/images/vol-e.png");
+    this->mBackground.setTexture(&this->mBackgroundTex);
 }
 
 // == CONSTRUCTOR/DESTRUCTOR ==
 MainMenuState::MainMenuState(sf::RenderWindow* Win, std::stack<State*>* States) : State(Win,States)
 {
     std::cout << "pushed main menu state" << '\n';
+    this->initBG();
     this->initFont();
     this->initButtons();
     
@@ -91,5 +100,7 @@ void MainMenuState::renderButtons(sf::RenderTarget* targetWin)
 }
 void MainMenuState::renderState(sf::RenderTarget* targetWin)
 {
+    targetWin->draw(this->mBackground);
     this->renderButtons(targetWin);
+    
 }

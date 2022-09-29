@@ -6,7 +6,7 @@
 
 
 // Main Menu state where we will be pushing all other states to 
-// (ex: we will push the Game State first when we press "New Game")
+// (ex: we will push the Game State first when we press "New Game
 class MainMenuState : public State
 {
 
@@ -15,12 +15,15 @@ private:
 // == RESOURCES ==
 Button* mMMButton;
 sf::Font mFont;
+sf::RectangleShape mBackground;
+sf::Texture mBackgroundTex;
 
 std::map<std::string, Button*> mButtonContainer;
 
 // == INITIALIZER FUNCTIONS ==
 void initFont();
 void initButtons();
+void initBG();
 
 public:
 // == CONSTRUCTOR/DESTRUCTOR ==

@@ -47,7 +47,7 @@ const sf::Texture& loadTexture(std::string filename)
     sf::Texture* temp_t = new sf::Texture;
     assert(temp_t->loadFromFile(filename));
     manageTexture(filename, temp_t);
-    return *temp_t; 
+    return *temp_t;
 }
 
 };

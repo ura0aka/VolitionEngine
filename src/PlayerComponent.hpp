@@ -1,24 +1,31 @@
 #include "Component.hpp"
+#include "AnimationComponent.hpp"
 
 
 // separate player component with all of its unique sub-components
 struct PlayerComponent : Component
 {
-    // sf::RectangleShape pSprite;
     sf::Vector2f pSize{10.0f,10.0f};
     sf::Vector2f pMovVelocity{200.0f, 200.0f};
     sf::Vector2f pPos;
-    sf::Color pColor{sf::Color::Green};
-    sf::RectangleShape pShape;
-    // sf::Texture pTexture;
+    //sf::RectangleShape pSprite;
+    //sf::Texture pTexture;
+    sf::Sprite pSprite;
+    AnimationComponent runRightD;
+    
     
 
-    PlayerComponent(sf::Vector2f pos) : pPos{pos}
+    PlayerComponent(sf::Vector2f pos) 
+        : pPos{pos}, runRightD{32,32,32,32}
     {
-        pShape.setPosition(pPos);
-        pShape.setFillColor(pColor);
-        pShape.setSize(pSize);
-        // pSprite.setTexture(pTexture);
+        //pSprite.setFillColor(pColor);
+        //pSprite.setSize(pSize);
+        //pSprite.setTexture(pTexture);
+        //pTexture.loadFromFile("res/textures/professor_walk_cycle.png");
+        //pSprite.setTexture(pTexture);
+        //pSprite.setTextureRect({0,0,32,32});
+        pSprite.setScale(2, 2);
+
     }
 
     
@@ -28,40 +35,46 @@ struct PlayerComponent : Component
         // forward (W)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            this->pShape.move(0.0f, dt * -(this->pMovVelocity.y));
+            this->pSprite.move(0.0f, dt * -(this->pMovVelocity.y));
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            this->pShape.move(0.0f, dt * this->pMovVelocity.y);
+            this->pSprite.move(0.0f, dt * this->pMovVelocity.y);
         }
         // left (A)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            this->pShape.move(-(dt * this->pMovVelocity.x), 0.0f);
+            this->pSprite.move(-(dt * this->pMovVelocity.x), 0.0f);
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            this->pShape.move(dt * this->pMovVelocity.x, 0.0f);
+            this->pSprite.move(dt * this->pMovVelocity.x, 0.0f);
         } 
     }
 
+    void updateSpriteAnimation(const float& dt)
+    {
+        this->runRightD.animateSprite(this->pSprite);
+        this->runRightD.updateAnimation(dt);
+    }
 
     void updateComponent(const float& dt) override
     {
+        this->updateSpriteAnimation(dt);
         this->updateInput(dt);
     }
 
     void renderComponent(sf::RenderTarget* targetWin) override
     {
-        targetWin->draw(this->pShape);
+        targetWin->draw(this->pSprite);
     }
 
-    float leftX() const noexcept { return pShape.getGlobalBounds().left; };
-    float rightX() const noexcept { return pShape.getGlobalBounds().left + pShape.getGlobalBounds().width; };
-    float topY() const noexcept { return pShape.getGlobalBounds().top; };
-    float bottomY() const noexcept { return pShape.getGlobalBounds().top + pShape.getGlobalBounds().height; };
-    float heightY() const noexcept { return pShape.getGlobalBounds().height; };
-    float widthX() const noexcept { return pShape.getGlobalBounds().width; };
+    float leftX() const noexcept { return pSprite.getGlobalBounds().left; };
+    float rightX() const noexcept { return pSprite.getGlobalBounds().left + pSprite.getGlobalBounds().width; };
+    float topY() const noexcept { return pSprite.getGlobalBounds().top; };
+    float bottomY() const noexcept { return pSprite.getGlobalBounds().top + pSprite.getGlobalBounds().height; };
+    float heightY() const noexcept { return pSprite.getGlobalBounds().height; };
+    float widthX() const noexcept { return pSprite.getGlobalBounds().width; };
 };

@@ -19,8 +19,6 @@ Entity& GameState::initPlayer()
     auto& entity(this->manager.addEntity());
 
     entity.addComponent<PlayerComponent>(sf::Vector2f(100.0f, 100.0f));
-    //(sf::Vector2f(100.0f, 100.0f),
-    //sf::Texture(this->res_manager.loadTexture("res/textures/botamon.png")));
  
     entity.addGroup(VolEGroups::Player);
     return entity;
@@ -51,7 +49,7 @@ GameState::GameState(sf::RenderWindow* Win, std::stack<State*>* States) : State(
 
     this->mMouseHeld = false;
     this->initPlayer();
-    for(int i {0}; i < 100; ++i) { this->initNPC(); }
+    for(int i {0}; i < 0; ++i) { this->initNPC(); }
 }
 
 GameState::~GameState() {}
