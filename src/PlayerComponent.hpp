@@ -15,11 +15,11 @@ struct PlayerComponent : Component
         maxCount
     };
 
-    sf::Vector2f pSize{10.0f,10.0f};
-    sf::Vector2f pMovVelocity{210.0f, 210.0f};
+    sf::Vector2f pSize{ 10.0f,10.0f };
+    sf::Vector2f pMovVelocity{ 210.0f, 210.0f };
     sf::Vector2f pPos;
-    //sf::RectangleShape pSprite;
-    //sf::Texture pTexture;
+
+    std::string pFilename{"res/textures/drifter_walk_cycle_full.png"};
     sf::Sprite pSprite;
     AnimationComponent pAnimations[int(AnimationIndex::maxCount)];
     AnimationIndex pCurrAnimation = AnimationIndex::Down;
@@ -27,18 +27,12 @@ struct PlayerComponent : Component
     PlayerComponent(sf::Vector2f pos) 
         : pPos{ pos }
     {
-        //pSprite.setFillColor(pColor);
-        //pSprite.setSize(pSize);
-        //pSprite.setTexture(pTexture);
-   
-        //pSprite.setTexture(pTexture);
         pSprite.setTextureRect({0,0,32,32});
-        pAnimations[int(AnimationIndex::Up)] = AnimationComponent(32, 0, 32, 32);
-        pAnimations[int(AnimationIndex::Down)] = AnimationComponent(32, 32, 32, 32);
-        pAnimations[int(AnimationIndex::Left)] = AnimationComponent(32, 64, 32, 32);
-        pAnimations[int(AnimationIndex::Right)] = AnimationComponent(32, 96, 32, 32);
+        pAnimations[int(AnimationIndex::Up)] = AnimationComponent(32, 0, 32, 32, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Down)] = AnimationComponent(32, 32, 32, 32, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Left)] = AnimationComponent(32, 64, 32, 32, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Right)] = AnimationComponent(32, 96, 32, 32, std::move(pFilename));
         pSprite.setScale(2,2);
-
     }
 
     

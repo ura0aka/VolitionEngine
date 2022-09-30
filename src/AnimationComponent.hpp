@@ -22,9 +22,9 @@ public:
 
 	AnimationComponent() = default;
 	
-	AnimationComponent(int x, int y, int width, int height)
+	AnimationComponent(int x, int y, int width, int height, std::string&& spritesheet)
 	{
-		aTexture.loadFromFile("res/textures/drifter_walk_cycle_full.png");
+		aTexture.loadFromFile(spritesheet);
 		for (int i{ 0 }; i < nFrames; i++)
 		{
 			mFrames[i] = { x + i * width, y, width, height};
