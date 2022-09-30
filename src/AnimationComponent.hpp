@@ -10,24 +10,26 @@ class AnimationComponent
 {
 private:
 
-	static constexpr int nFrames = 12;
-	static constexpr float nHoldTime = 0.07f;
+	sf::Texture aTexture;
+	std::vector<sf::IntRect> mFrames;
+
+	float nHoldTime;
+	int nFrames;
+
 	int iFrame = 0;
 	float iFrameTime = 0.0f;
 
-	sf::Texture aTexture;
-	sf::IntRect mFrames[nFrames];
-	
 public:
 
 	AnimationComponent() = default;
-	
-	AnimationComponent(int x, int y, int width, int height, std::string&& spritesheet)
+
+	AnimationComponent(int x, int y, int width, int height, int framesnum, float holdtime, std::string&& spritesheet)
+		: nHoldTime{holdtime}, nFrames{framesnum}
 	{
 		aTexture.loadFromFile(spritesheet);
 		for (int i{ 0 }; i < nFrames; i++)
 		{
-			mFrames[i] = { x + i * width, y, width, height};
+			mFrames.emplace_back(sf::Vector2i{x,y},sf::Vector2i{width,height});
 		}
 	}
 
@@ -43,7 +45,7 @@ public:
 		while (iFrameTime >= nHoldTime)
 		{
 			iFrameTime -= nHoldTime;
-			if (++iFrame >= nFrames)
+			if (++iFrame >= mFrames.size())
 			{
 				iFrame = 0;
 			}

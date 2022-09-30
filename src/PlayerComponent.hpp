@@ -11,7 +11,10 @@ struct PlayerComponent : Component
         Down,
         Left,
         Right,
-        Idle,
+        IdleUp,
+        IdleDown,
+        IdleLeft,
+        IdleRight,
         maxCount
     };
 
@@ -22,16 +25,23 @@ struct PlayerComponent : Component
     std::string pFilename{"res/textures/drifter_walk_cycle_full.png"};
     sf::Sprite pSprite;
     AnimationComponent pAnimations[int(AnimationIndex::maxCount)];
-    AnimationIndex pCurrAnimation = AnimationIndex::Down;
+    AnimationIndex pCurrAnimation = AnimationIndex::IdleDown;
+    AnimationIndex pPrevAnimation = AnimationIndex::IdleDown;
     
     PlayerComponent(sf::Vector2f pos) 
         : pPos{ pos }
     {
         pSprite.setTextureRect({0,0,32,32});
-        pAnimations[int(AnimationIndex::Up)] = AnimationComponent(32, 0, 32, 32, std::move(pFilename));
-        pAnimations[int(AnimationIndex::Down)] = AnimationComponent(32, 32, 32, 32, std::move(pFilename));
-        pAnimations[int(AnimationIndex::Left)] = AnimationComponent(32, 64, 32, 32, std::move(pFilename));
-        pAnimations[int(AnimationIndex::Right)] = AnimationComponent(32, 96, 32, 32, std::move(pFilename));
+        // while sprite is moving
+        pAnimations[int(AnimationIndex::Up)] = AnimationComponent(32, 0, 32, 32, 12, 0.07f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Down)] = AnimationComponent(32, 32, 32, 32, 12, 0.07f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Left)] = AnimationComponent(32, 64, 32, 32, 12, 0.07f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::Right)] = AnimationComponent(32, 96, 32, 32, 12, 0.07f, std::move(pFilename));
+        // while sprite is idling
+        pAnimations[int(AnimationIndex::IdleUp)] = AnimationComponent(0, 0, 32, 32, 1, 10.0f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::IdleDown)] = AnimationComponent(0, 32, 32, 32, 1, 10.0f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::IdleLeft)] = AnimationComponent(0, 64, 32, 32, 1, 10.0f, std::move(pFilename));
+        pAnimations[int(AnimationIndex::IdleRight)] = AnimationComponent(0, 96, 32, 32, 1, 10.0f, std::move(pFilename));
         pSprite.setScale(2,2);
     }
 
@@ -43,26 +53,54 @@ struct PlayerComponent : Component
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             this->pCurrAnimation = AnimationIndex::Up;
+            this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(0.0f, dt * -(this->pMovVelocity.y));
         }
         // backwards (S)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             this->pCurrAnimation = AnimationIndex::Down;
+            this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(0.0f, dt * this->pMovVelocity.y);
         }
         // left (A)
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             this->pCurrAnimation = AnimationIndex::Left;
+            this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(-(dt * this->pMovVelocity.x), 0.0f);
         }
         // right (D)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             this->pCurrAnimation = AnimationIndex::Right;
+            this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(dt * this->pMovVelocity.x, 0.0f);
-        } 
+        }
+        // Idling 
+        else
+        {
+            if(pPrevAnimation == AnimationIndex::Up)
+            {
+                this->pCurrAnimation = AnimationIndex::IdleUp;
+                //this->pPrevAnimation = pCurrAnimation;
+            }
+            else if(pPrevAnimation == AnimationIndex::Down)
+            {
+                this->pCurrAnimation = AnimationIndex::IdleDown;
+                //this->pPrevAnimation = pCurrAnimation;
+            }
+            else if(pPrevAnimation == AnimationIndex::Left)
+            {
+                this->pCurrAnimation = AnimationIndex::IdleLeft;
+                //this->pPrevAnimation = pCurrAnimation;
+            }
+            else if(pPrevAnimation == AnimationIndex::Right)
+            {
+                this->pCurrAnimation = AnimationIndex::IdleRight;
+                //this->pPrevAnimation = pCurrAnimation;
+            }
+        }
     }
 
     void updateSpriteAnimation(const float& dt)
@@ -73,8 +111,8 @@ struct PlayerComponent : Component
 
     void updateComponent(const float& dt) override
     {
-        this->updateSpriteAnimation(dt);
         this->updateInput(dt);
+        this->updateSpriteAnimation(dt);
     }
 
     void renderComponent(sf::RenderTarget* targetWin) override
