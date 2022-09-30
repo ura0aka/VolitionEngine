@@ -26,10 +26,12 @@ public:
 	AnimationComponent(int x, int y, int width, int height, int framesnum, float holdtime, std::string&& spritesheet)
 		: nHoldTime{holdtime}, nFrames{framesnum}
 	{
+		mFrames.reserve(nFrames);
 		aTexture.loadFromFile(spritesheet);
 		for (int i{ 0 }; i < nFrames; i++)
 		{
 			mFrames.emplace_back(sf::Vector2i{x,y},sf::Vector2i{width,height});
+			x += width;
 		}
 	}
 

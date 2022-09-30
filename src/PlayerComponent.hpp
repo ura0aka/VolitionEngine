@@ -31,7 +31,6 @@ struct PlayerComponent : Component
     PlayerComponent(sf::Vector2f pos) 
         : pPos{ pos }
     {
-        pSprite.setTextureRect({0,0,32,32});
         // while sprite is moving
         pAnimations[int(AnimationIndex::Up)] = AnimationComponent(32, 0, 32, 32, 12, 0.07f, std::move(pFilename));
         pAnimations[int(AnimationIndex::Down)] = AnimationComponent(32, 32, 32, 32, 12, 0.07f, std::move(pFilename));
@@ -48,60 +47,58 @@ struct PlayerComponent : Component
     
     void updateInput(const float& dt)
     {
+        // WARNING: these are some of the worst conditional statements ever, but it works -too bad!
+
+        // initially, our character is in an idle state
+        if (pPrevAnimation == AnimationIndex::Up)
+        {
+            this->pCurrAnimation = AnimationIndex::IdleUp;
+        }
+        else if (pPrevAnimation == AnimationIndex::Down)
+        {
+            this->pCurrAnimation = AnimationIndex::IdleDown;
+        }
+        if (pPrevAnimation == AnimationIndex::Left)
+        {
+            this->pCurrAnimation = AnimationIndex::IdleLeft;
+        }
+        else if (pPrevAnimation == AnimationIndex::Right)
+        {
+            this->pCurrAnimation = AnimationIndex::IdleRight;
+        }
+
         // keyboard input (player movement)
         // forward (W)
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             this->pCurrAnimation = AnimationIndex::Up;
             this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(0.0f, dt * -(this->pMovVelocity.y));
         }
         // backwards (S)
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             this->pCurrAnimation = AnimationIndex::Down;
             this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(0.0f, dt * this->pMovVelocity.y);
         }
         // left (A)
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             this->pCurrAnimation = AnimationIndex::Left;
             this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(-(dt * this->pMovVelocity.x), 0.0f);
         }
         // right (D)
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             this->pCurrAnimation = AnimationIndex::Right;
             this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(dt * this->pMovVelocity.x, 0.0f);
         }
-        // Idling 
-        else
-        {
-            if(pPrevAnimation == AnimationIndex::Up)
-            {
-                this->pCurrAnimation = AnimationIndex::IdleUp;
-                //this->pPrevAnimation = pCurrAnimation;
-            }
-            else if(pPrevAnimation == AnimationIndex::Down)
-            {
-                this->pCurrAnimation = AnimationIndex::IdleDown;
-                //this->pPrevAnimation = pCurrAnimation;
-            }
-            else if(pPrevAnimation == AnimationIndex::Left)
-            {
-                this->pCurrAnimation = AnimationIndex::IdleLeft;
-                //this->pPrevAnimation = pCurrAnimation;
-            }
-            else if(pPrevAnimation == AnimationIndex::Right)
-            {
-                this->pCurrAnimation = AnimationIndex::IdleRight;
-                //this->pPrevAnimation = pCurrAnimation;
-            }
-        }
+
     }
+
 
     void updateSpriteAnimation(const float& dt)
     {
@@ -111,8 +108,8 @@ struct PlayerComponent : Component
 
     void updateComponent(const float& dt) override
     {
-        this->updateInput(dt);
         this->updateSpriteAnimation(dt);
+        this->updateInput(dt);
     }
 
     void renderComponent(sf::RenderTarget* targetWin) override
