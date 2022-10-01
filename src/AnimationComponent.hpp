@@ -23,14 +23,17 @@ public:
 
 	AnimationComponent() = default;
 
+	
 	AnimationComponent(int x, int y, int width, int height, int framesnum, float holdtime, std::string&& spritesheet)
-		: nHoldTime{holdtime}, nFrames{framesnum}
+		: nHoldTime{ holdtime }, nFrames{ framesnum }
 	{
+		// iterate over the vector of rects 
+		// (each animation component object instance has a different animation loop)
 		mFrames.reserve(nFrames);
 		aTexture.loadFromFile(spritesheet);
-		for (int i{ 0 }; i < nFrames; i++)
+		for (int i{ 0 }; i < nFrames; ++i)
 		{
-			mFrames.emplace_back(sf::Vector2i{x,y},sf::Vector2i{width,height});
+			mFrames.emplace_back(sf::Vector2i{ x,y }, sf::Vector2i{ width,height });
 			x += width;
 		}
 	}
@@ -52,7 +55,6 @@ public:
 				iFrame = 0;
 			}
 		}
-
 	}
 
 };

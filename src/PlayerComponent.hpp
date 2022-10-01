@@ -25,8 +25,9 @@ struct PlayerComponent : Component
     std::string pFilename{"res/textures/drifter_walk_cycle_full.png"};
     sf::Sprite pSprite;
     AnimationComponent pAnimations[int(AnimationIndex::maxCount)];
-    AnimationIndex pCurrAnimation = AnimationIndex::IdleDown;
     AnimationIndex pPrevAnimation = AnimationIndex::IdleDown;
+    AnimationIndex pCurrAnimation = pPrevAnimation;
+
     
     PlayerComponent(sf::Vector2f pos) 
         : pPos{ pos }
@@ -96,9 +97,7 @@ struct PlayerComponent : Component
             this->pPrevAnimation = pCurrAnimation;
             this->pSprite.move(dt * this->pMovVelocity.x, 0.0f);
         }
-
     }
-
 
     void updateSpriteAnimation(const float& dt)
     {
