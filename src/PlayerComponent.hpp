@@ -1,4 +1,5 @@
 #include "Component.hpp"
+#include "ResourceManager.hpp"
 #include "AnimationComponent.hpp"
 
 

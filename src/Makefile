@@ -26,7 +26,7 @@ $(BINARY):$(OBJECTS)
 # $^ = %.cpp
 
 # all .o files possess a dependency on Game.hpp
-$(OBJECTS): Game.hpp ComponentsUtil.hpp ResourceManager.hpp
+$(OBJECTS): Game.hpp ResourceManager.hpp ComponentsUtil.hpp PlayerComponent.hpp AnimationComponent.hpp 
 
 clean: 
 	rm -rf $(BINARY) $(OBJECTS)

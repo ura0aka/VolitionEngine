@@ -9,45 +9,30 @@
 class ResourceManager
 {
 private:
-std::map<std::string,std::unique_ptr<sf::Texture>> mTexturePtrMap;
-std::map<std::string, sf::Texture*> mTextureMap;
-
-void manageTexture(std::string filename, sf::Texture* texture)
-{
-    std::unique_ptr<sf::Texture> u_TexturePtr{texture};
-    mTextureMap[filename] = texture;
-    mTexturePtrMap[filename] = std::move(u_TexturePtr);
-}
-
-sf::Texture* getTexture(std::string filename)
-{
-    // iterate through entire map and return corresponding texture
-    auto mapIt = mTextureMap.find(filename);
-    if(mapIt == mTextureMap.end())
-    {
-        std::cout << "Texture not found. \n";
-        return nullptr;
-    }
-    std::cout << "1 texture found, loading... \n";
-    return mapIt->second;
-}
+    // map of shared_ptrs to textures (because they will be shared around by different entities)
+    static std::map<std::string,std::shared_ptr<sf::Texture>> mTexturePtrMap;
 
 public:
 ResourceManager() {}
 ~ResourceManager() {}
 
-const sf::Texture& loadTexture(std::string filename)
+std::shared_ptr<sf::Texture> getTexture(const std::string& filename)
 {
-    sf::Texture* managedTexture = getTexture(filename);
-    if(managedTexture != nullptr)
+    // iterate through entire map and return corresponding texture
+    const auto mapIt = mTexturePtrMap.find(filename);
+    if (mapIt != mTexturePtrMap.end())
     {
-        return *managedTexture;
+        // if texture already exists in the map, return
+        return mapIt->second;
     }
-
-    sf::Texture* temp_t = new sf::Texture;
-    assert(temp_t->loadFromFile(filename));
-    manageTexture(filename, temp_t);
-    return *temp_t;
+    else
+    {
+        // if texture does not exist yet, insert into the map & return
+        auto newTex = std::make_shared<sf::Texture>();
+        newTex->loadFromFile(filename);
+        mTexturePtrMap.insert({ filename,newTex });
+        return newTex;
+    }
 }
 
 };
