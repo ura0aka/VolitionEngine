@@ -3,12 +3,11 @@
 #include "State.hpp"
 #include "PlayerComponent.hpp"
 #include "EntityManager.hpp"
-#include "ResourceManager.hpp"
+
 
 #include <random>
 
 class EntityManager;
-class ResourceManager;
 // == GAME STATE CLASS ==
 // game state class where everything will happen
 class GameState : public State
@@ -17,7 +16,7 @@ private:
 
 // == MANAGERS ==
 EntityManager manager;
-ResourceManager res_manager;
+
 
 // == RESOURCES ==
 sf::Sprite mSprite;

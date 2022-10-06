@@ -1,19 +1,21 @@
 #pragma once
 
+#include "ResourceManager.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Texture.hpp"
 
-#include "ResourceManager.hpp"
 
 class AnimationComponent
 {
 private:
+	// TODO: Fix resource manager later
 	std::shared_ptr<sf::Texture> aTexture;
 	std::vector<sf::IntRect> mFrames;
-	ResourceManager resMan;
+	ResourceManager mResMan;
 
 	float nHoldTime;
 	int nFrames;
@@ -25,14 +27,14 @@ public:
 
 	AnimationComponent() = default;
 
-	
+
 	AnimationComponent(int x, int y, int width, int height, int framesnum, float holdtime, std::string&& spritesheet)
 		: nHoldTime{ holdtime }, nFrames{ framesnum }
 	{
 		// iterate over the vector of rects 
 		// (each animation component object instance has a different animation loop)
 		mFrames.reserve(nFrames);
-		aTexture = resMan.getTexture(spritesheet);
+		aTexture = mResMan.getTexture(spritesheet);
 		for (int i{ 0 }; i < nFrames; ++i)
 		{
 			mFrames.emplace_back(sf::Vector2i{ x,y }, sf::Vector2i{ width,height });

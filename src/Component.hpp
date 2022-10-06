@@ -45,7 +45,7 @@ template<typename T> inline ComponentID getComponentTypeID() noexcept
 
     // make sure getComponentTypeID only gets called with 'T' that inherits from the Component class
     // (std::is_base_of provides ::value = TRUE if the derived is part of the given base class)
-    static_assert(std::is_base_of<Component, T>::value && "ERROR: T must inherit from base Component class. \n");
+    static_assert(std::is_base_of<Component, T>::value && "ERROR: type T must inherit from base Component class. \n");
     static ComponentID typeID{genUComponentID()};
 
     // subsequent calls with the same component type will return the same ID
