@@ -8,12 +8,10 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Oct 06 10:23:35 2022
+# Make data base, printed on Tue Oct 11 16:39:55 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -39,9 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11700_NOMGWFUBBEANSUFS
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4848_GYGQXWGVZYYRFYYW
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -53,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\74b1f979648cc44d385a2286793c226e611f59e7
+VSCODE_CODE_CACHE_PATH = C:\Users\maxge\AppData\Roaming\Code\CachedData\129500ee4c8ab7263461ffe327268ba56b9f210d
 # environment
 LANG = C
 # default
@@ -89,7 +85,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11700
+VSCODE_PID = 4848
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -185,7 +181,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\maxge\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.71.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\dc9de2be27941e54872e45135a700095-1.72.1-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -205,7 +201,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 # environment
 VCPKG_DEFAULT_TRIPLET = x64-windows
 # variable set hash-table stats:
-# Load=96/1024=9%, Rehash=0, Collisions=8/121=7%
+# Load=94/1024=9%, Rehash=0, Collisions=7/119=6%
 
 # Pattern-specific Variable Values
 
@@ -278,6 +274,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Thu Oct 06 10:23:35 2022
+# Finished Make data base on Tue Oct 11 16:39:55 2022
 
  

@@ -9,13 +9,13 @@
 class ResourceManager
 {
 public:
-
+    
     // map of shared_ptrs to textures (because they will be shared around by different entities)
-    static std::unordered_map<std::string, std::shared_ptr<sf::Texture>> mTexturePtrMap;
+    std::unordered_map<std::string, std::shared_ptr<sf::Texture>> mTexturePtrMap;
     ResourceManager() {}
     ~ResourceManager() {}
 
-    static std::shared_ptr<sf::Texture> getTexture(const std::string& filename)
+    std::shared_ptr<sf::Texture> getTexture(const std::string& filename)
     {
         // iterate through entire map and return corresponding texture
         const auto mapIt = mTexturePtrMap.find(filename);
