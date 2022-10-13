@@ -91,6 +91,34 @@ struct PhysicsComponent : Component
     sf::FloatRect ShapeBounds() const noexcept { return mShape->getGlobalBounds(); };
 };
 
+// for later use...
+struct HitBoxComponent : public Component
+{
+    sf::RectangleShape mHitbox;
+    sf::Sprite& mSprite;
+    float mOffsetX;
+    float mOffsetY;
+
+    HitBoxComponent() = default;
+
+    HitBoxComponent(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height)
+        : mSprite{ sprite }, mOffsetX{ offset_x }, mOffsetY{ offset_y }
+    {
+        mHitbox.setPosition(mSprite.getPosition().x + offset_x, mSprite.getPosition().y + offset_y);
+        mHitbox.setSize(sf::Vector2f(width, height));
+    }
+
+    void updateComponent(const float& dt)
+    {
+        mHitbox.setPosition(this->mSprite.getPosition().x + mOffsetX, this->mSprite.getPosition().y + mOffsetY);
+    }
+
+    void renderComponent(sf::RenderTarget* targetWin)
+    {
+        targetWin->draw(this->mHitbox);
+    }
+};
+
 
 constexpr float playerVelocity{200.0f};
 struct MovementComponent : Component
